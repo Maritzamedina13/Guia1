@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Administradores: lectura y escritura necesarias para setup + login
+    match /admin_usuarios/{username} {
+      allow read, write: if true;
+    }
+
+    // Usuarios del sistema: el portal admin los gestiona (CRUD)
+    match /usuarios_guias/{username} {
+      allow read, write: if true;
+    }
+
+    // Formularios de guías: monitores los llenan y el admin los consulta
+    match /guia1_visita_inicio/{docId} { allow read, write: if true; }
+    match /guia2_seguimiento/{docId}   { allow read, write: if true; }
+    match /guia3_evaluacion/{docId}    { allow read, write: if true; }
+    match /guia4_cierre/{docId}        { allow read, write: if true; }
+
+    // Todo lo demás: bloqueado
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
