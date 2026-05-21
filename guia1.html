@@ -194,8 +194,8 @@
   .obj-body textarea { width: 100%; min-height: 38px; }
 
   /* ── Plan de trabajo ── */
-  .plan-tp { font-size: 7pt; }
-  .plan-tp label { display: inline-flex; align-items:center; gap:3px; margin-right:6px; }
+  .plan-tp { font-size: 7.5pt; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 4px 6px; }
+  .plan-tp label { display: inline-flex; align-items: center; gap: 3px; white-space: nowrap; }
 
   /* ── Punto 5: checkboxes en línea ── */
   .chk-inline { display:flex; gap:16px; justify-content:center; align-items:center; }
@@ -267,23 +267,12 @@
         <img src="Imagenes/LOGO ITM.png" alt="Logo ITM">
       </td>
       <td id="enc-tit">
-        <div class="t2">GUÍA N°1 – VISITA DE INICIO</div>
-        <div class="t3">MODALIDAD PRÁCTICAS PROFESIONALES</div>
+        <div class="t2">GUÍA 1: VISITA DE INICIO MODALIDAD DE PRÁCTICAS PROFESIONALES</div>
       </td>
-      <td rowspan="3" id="enc-cod">
+      <td rowspan="1" id="enc-cod">
         <p><strong>Código:</strong> <span style="color:var(--negro);font-weight:normal;">FDE 074</span></p>
-        <p><strong>Versión:</strong> <span style="color:var(--negro);font-weight:normal;">11</span></p>
-        <p><strong>Fecha:</strong> <span style="color:var(--negro);font-weight:normal;">01-06-2026</span></p>
-      </td>
-    </tr>
-    <tr>
-      <td id="enc-dir">
-        Vicerrectoría de Docencia &nbsp;·&nbsp; Dirección de Gestión Académica &nbsp;·&nbsp; Oficina de Prácticas Profesionales ITM
-      </td>
-    </tr>
-    <tr>
-      <td id="enc-ref">
-        <strong>Ref. normativa:</strong> Política de Prácticas ITM · Decreto 0223/2026
+        <p><strong>Versión:</strong> <span style="color:var(--negro);font-weight:normal;"></span></p>
+        <p><strong>Fecha:</strong> <span style="color:var(--negro);font-weight:normal;"></span></p>
       </td>
     </tr>
   </table>
@@ -295,8 +284,8 @@
   <p style="font-size:9pt;padding:6px 4px;line-height:1.5;margin-bottom:3px;text-align:justify;">
     La Guía N°1 – Visita de Inicio tiene como propósito verificar y registrar las condiciones iniciales en las que el practicante
     ingresa al escenario de práctica o empresa patrocinadora durante el primer mes de vinculación. Sirve además como instrumento
-    de formalización del Plan de Trabajo exigido por el Art. 2.2.6.3.1.11 del Decreto 0223 de 2026 y la Política de Prácticas
-    Profesionales ITM, garantizando la articulación tripartita entre el practicante, el Tutor y el Monitor.
+    de formalización del Plan de Práctica exigido por el Decreto 0223 de 2026 y la Política de Prácticas Profesionales ITM,
+    garantizando la articulación tripartita entre el practicante, el Tutor y el Monitor.
   </p>
 
   <div class="spacer"></div>
@@ -327,22 +316,6 @@
         <td class="input-cell">
           <select id="sel-programa" style="width:100%;border:none;background:transparent;font-family:Arial,sans-serif;font-size:9pt;color:var(--negro);outline:none;cursor:pointer;">
             <option value="">-- Seleccione primero la facultad --</option>
-          </select>
-        </td></tr>
-    <tr><td class="lbl">Semestre en curso:</td>
-        <td class="input-cell alt">
-          <select style="width:100%;border:none;background:transparent;font-family:Arial,sans-serif;font-size:9pt;color:var(--negro);outline:none;cursor:pointer;">
-            <option value="">-- Seleccione --</option>
-            <option>1° Semestre</option>
-            <option>2° Semestre</option>
-            <option>3° Semestre</option>
-            <option>4° Semestre</option>
-            <option>5° Semestre</option>
-            <option>6° Semestre</option>
-            <option>7° Semestre</option>
-            <option>8° Semestre</option>
-            <option>9° Semestre</option>
-            <option>10° Semestre</option>
           </select>
         </td></tr>
     <tr><td class="lbl">Monitor asignado (ITM):</td>
@@ -385,9 +358,9 @@
         </td></tr>
     <tr><td class="lbl">Modalidad de práctica:</td>
         <td class="input-cell alt" style="padding:4px 7px;">
-          <label class="chk"><input type="checkbox"> Práctica Profesional</label>
-          <label class="chk"><input type="checkbox"> Práctica Social</label>
-          <label class="chk"><input type="checkbox"> Práctica Internacional</label>
+          <label class="chk"><input type="checkbox"> Prácticas profesionales</label>
+          <label class="chk"><input type="checkbox"> Prácticas sociales</label>
+          <label class="chk"><input type="checkbox"> Prácticas internacionales</label>
         </td></tr>
   </table>
 
@@ -479,21 +452,14 @@
         <td class="input-cell"><input type="text" placeholder="correo@empresa.com"></td></tr>
     <tr><td class="lbl">Teléfono del Tutor:</td>
         <td class="input-cell alt"><input type="text"></td></tr>
-    <tr><td class="lbl">Área / Dependencia de práctica:</td>
+    <tr><td class="lbl">Área en la que el practicante ejecuta sus funciones:</td>
         <td class="input-cell"><input type="text"></td></tr>
-    <tr><td class="lbl">Modalidad de trabajo:</td>
-        <td class="input-cell alt" style="padding:4px 7px;">
-          <label class="chk"><input type="checkbox"> Presencial</label>
-          <label class="chk"><input type="checkbox"> Híbrida</label>
-          <label class="chk"><input type="checkbox"> Virtual</label>
-        </td></tr>
   </table>
 
   <div class="spacer"></div>
 
   <!-- ═══ 4. VERIFICACIÓN DE DOCUMENTOS ══════════════════════════ -->
   <div class="sec-title"><span class="sec-num">4</span><span class="sec-text">VERIFICACIÓN DE DOCUMENTOS DE VINCULACIÓN</span></div>
-  <p class="nota">(Decreto 0223/2026 – Arts. 2.2.6.3.2.3, 2.2.6.3.2.4 y 2.2.6.3.3.14)</p>
   <table>
     <colgroup><col><col style="width:130px"></colgroup>
     <tr>
@@ -501,7 +467,7 @@
       <td class="col-hdr">Verificado</td>
     </tr>
     <tr>
-      <td class="input-cell">Contrato de aprendizaje / Acuerdo de voluntades / Acto administrativo</td>
+      <td class="input-cell">Contrato de aprendizaje / Contrato de vinculación formativa</td>
       <td class="input-cell" style="text-align:center;padding:3px 2px;">
         <label class="chk"><input type="checkbox"> Sí</label>
         <label class="chk"><input type="checkbox"> No</label>
@@ -533,7 +499,7 @@
       </td>
     </tr>
     <tr>
-      <td class="input-cell">Carta de inicio emitida por la OPP-ITM</td>
+      <td class="input-cell">Carta de inicio emitida por la Oficina de Prácticas Profesionales ITM</td>
       <td class="input-cell" style="text-align:center;padding:3px 2px;">
         <label class="chk"><input type="checkbox"> Sí</label>
         <label class="chk"><input type="checkbox"> No</label>
@@ -542,22 +508,6 @@
     </tr>
     <tr>
       <td class="input-cell alt">Reglamento interno de trabajo entregado al aprendiz (contrato aprendizaje)</td>
-      <td class="input-cell alt" style="text-align:center;padding:3px 2px;">
-        <label class="chk"><input type="checkbox"> Sí</label>
-        <label class="chk"><input type="checkbox"> No</label>
-        <label class="chk"><input type="checkbox"> N/A</label>
-      </td>
-    </tr>
-    <tr>
-      <td class="input-cell">Aprobación de funciones por Monitor ITM</td>
-      <td class="input-cell" style="text-align:center;padding:3px 2px;">
-        <label class="chk"><input type="checkbox"> Sí</label>
-        <label class="chk"><input type="checkbox"> No</label>
-        <label class="chk"><input type="checkbox"> N/A</label>
-      </td>
-    </tr>
-    <tr>
-      <td class="input-cell alt">Acta de inicio suscrita por las tres partes</td>
       <td class="input-cell alt" style="text-align:center;padding:3px 2px;">
         <label class="chk"><input type="checkbox"> Sí</label>
         <label class="chk"><input type="checkbox"> No</label>
@@ -578,7 +528,6 @@
 
   <!-- ═══ 5. CONDICIONES DEL ESCENARIO ════════════════════════════ -->
   <div class="sec-title"><span class="sec-num">5</span><span class="sec-text">VERIFICACIÓN DE CONDICIONES DEL ESCENARIO DE PRÁCTICA</span></div>
-  <p class="nota">(Decreto 0223/2026 – Art. 2.2.6.3.1.10 | Política ITM – Cap. VI, num. 6.2)</p>
   <table>
     <colgroup><col><col style="width:140px"></colgroup>
     <tr>
@@ -588,12 +537,6 @@
     <tr>
       <td class="input-cell">El practicante cuenta con espacio físico/virtual adecuado para realizar sus funciones</td>
       <td class="input-cell" style="text-align:center;padding:3px 2px;">
-        <div class="chk-inline"><label class="chk"><input type="checkbox"> Cumple</label><label class="chk"><input type="checkbox"> No cumple</label></div>
-      </td>
-    </tr>
-    <tr>
-      <td class="input-cell alt">Se le suministraron los EPP según la actividad (Art. 2.2.6.3.1.10 num. 7)</td>
-      <td class="input-cell alt" style="text-align:center;padding:3px 2px;">
         <div class="chk-inline"><label class="chk"><input type="checkbox"> Cumple</label><label class="chk"><input type="checkbox"> No cumple</label></div>
       </td>
     </tr>
@@ -628,8 +571,14 @@
       </td>
     </tr>
     <tr>
-      <td class="input-cell alt">El escenario cuenta con protocolo de prevención de acoso sexual (Ley 2365/2024)</td>
-      <td class="input-cell alt" style="text-align:center;padding:3px 2px;">
+      <td class="input-cell alt">¿Cuenta el escenario con un protocolo para la prevención del acoso sexual, en cumplimiento de la Ley 2365 de 2024?</td>
+      <td class="input-cell" style="text-align:center;padding:3px 2px;">
+        <div class="chk-inline"><label class="chk"><input type="checkbox"> Cumple</label><label class="chk"><input type="checkbox"> No cumple</label></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="input-cell">¿Se socializó con el estudiante la política de Acoso Laboral?</td>
+      <td class="input-cell" style="text-align:center;padding:3px 2px;">
         <div class="chk-inline"><label class="chk"><input type="checkbox"> Cumple</label><label class="chk"><input type="checkbox"> No cumple</label></div>
       </td>
     </tr>
@@ -649,110 +598,8 @@
 
   <div class="spacer"></div>
 
-  <!-- ═══ 6. PLAN DE TRABAJO ══════════════════════════════════════ -->
-  <div class="sec-title"><span class="sec-num">6</span><span class="sec-text">PLAN DE TRABAJO – PERÍODO DE PRÁCTICA</span></div>
-  <p class="nota">(Art. 2.2.6.3.1.11 Decreto 0223/2026 | Política ITM Sección 5.4 | Cap. VI Num. 6.3)</p>
-
-  <div class="obj-hdr">Objetivos formativos acordados (Practicante · Tutor · Monitor):</div>
-  <div class="obj-body">
-    <div style="padding:2px 0;"><span style="font-weight:bold;color:var(--azul)">1.</span> <input type="text" style="width:calc(100% - 16px);border-bottom:1px solid var(--gris-m);"></div>
-    <div style="padding:2px 0;"><span style="font-weight:bold;color:var(--azul)">2.</span> <input type="text" style="width:calc(100% - 16px);border-bottom:1px solid var(--gris-m);"></div>
-    <div style="padding:2px 0;"><span style="font-weight:bold;color:var(--azul)">3.</span> <input type="text" style="width:calc(100% - 16px);border-bottom:1px solid var(--gris-m);"></div>
-  </div>
-
-  <div class="spacer"></div>
-
-  <table>
-    <colgroup><col style="width:11%"><col style="width:36%"><col style="width:26%"><col></colgroup>
-    <tr>
-      <td class="col-hdr">Período</td>
-      <td class="col-hdr">Actividades / Funciones a desarrollar</td>
-      <td class="col-hdr">Resultados de aprendizaje esperados</td>
-      <td class="col-hdr">Tipo de producto</td>
-    </tr>
-    <!-- Mes 1 -->
-    <tr>
-      <td class="lbl" style="text-align:center;">Mes 1</td>
-      <td class="input-cell"><textarea></textarea></td>
-      <td class="input-cell"><textarea></textarea></td>
-      <td class="input-cell plan-tp">
-        <label><input type="checkbox"> Entregable</label>
-        <label><input type="checkbox"> Informe</label>
-        <label><input type="checkbox"> Ninguno</label>
-      </td>
-    </tr>
-    <!-- Mes 2 -->
-    <tr>
-      <td class="lbl" style="text-align:center;background:var(--gris-l);">Mes 2</td>
-      <td class="input-cell alt"><textarea></textarea></td>
-      <td class="input-cell alt"><textarea></textarea></td>
-      <td class="input-cell alt plan-tp">
-        <label><input type="checkbox"> Entregable</label>
-        <label><input type="checkbox"> Informe</label>
-        <label><input type="checkbox"> Ninguno</label>
-      </td>
-    </tr>
-    <!-- Mes 3 -->
-    <tr>
-      <td class="lbl" style="text-align:center;">Mes 3</td>
-      <td class="input-cell"><textarea></textarea></td>
-      <td class="input-cell"><textarea></textarea></td>
-      <td class="input-cell plan-tp">
-        <label><input type="checkbox"> Entregable</label>
-        <label><input type="checkbox"> Informe</label>
-        <label><input type="checkbox"> Ninguno</label>
-      </td>
-    </tr>
-    <!-- Mes 4 -->
-    <tr>
-      <td class="lbl" style="text-align:center;background:var(--gris-l);">Mes 4</td>
-      <td class="input-cell alt"><textarea></textarea></td>
-      <td class="input-cell alt"><textarea></textarea></td>
-      <td class="input-cell alt plan-tp">
-        <label><input type="checkbox"> Entregable</label>
-        <label><input type="checkbox"> Informe</label>
-        <label><input type="checkbox"> Ninguno</label>
-      </td>
-    </tr>
-    <!-- Mes 5 -->
-    <tr>
-      <td class="lbl" style="text-align:center;">Mes 5</td>
-      <td class="input-cell"><textarea></textarea></td>
-      <td class="input-cell"><textarea></textarea></td>
-      <td class="input-cell plan-tp">
-        <label><input type="checkbox"> Entregable</label>
-        <label><input type="checkbox"> Informe</label>
-        <label><input type="checkbox"> Ninguno</label>
-      </td>
-    </tr>
-    <!-- Mes 6 -->
-    <tr>
-      <td class="lbl" style="text-align:center;background:var(--gris-l);">Mes 6</td>
-      <td class="input-cell alt"><textarea></textarea></td>
-      <td class="input-cell alt"><textarea></textarea></td>
-      <td class="input-cell alt plan-tp">
-        <label><input type="checkbox"> Entregable</label>
-        <label><input type="checkbox"> Informe</label>
-        <label><input type="checkbox"> Ninguno</label>
-      </td>
-    </tr>
-    <!-- Mayor a 6 meses -->
-    <tr>
-      <td class="lbl" style="text-align:center;font-size:7.5pt;white-space:normal;">Mayor a 6 meses</td>
-      <td class="input-cell" colspan="3" style="padding:4px 8px;">
-        <textarea style="width:100%;min-height:40px;" placeholder="Describir actividades, resultados y productos esperados para el período mayor a 6 meses..."></textarea>
-      </td>
-    </tr>
-  </table>
-  <!-- Observaciones al pie del plan de trabajo -->
-  <div class="obj-hdr" style="margin-top:4px;">Observaciones Monitor / Tutor:</div>
-  <div class="obj-body"><textarea style="width:100%;min-height:50px;" placeholder="Observaciones generales del Monitor y/o Tutor sobre el plan de trabajo..."></textarea></div>
-
-  <div class="spacer"></div>
-
-  <!-- ═══ 7. HORARIO ══════════════════════════════════════════════ -->
-  <div class="sec-title"><span class="sec-num">7</span><span class="sec-text">HORARIO DE PRÁCTICA</span></div>
-  <p class="nota">(Art. 2.2.6.3.2.2 | Art. 2.2.6.3.1.5 Decreto 0223/2026 – Política ITM Sec. 8.14 para adolescentes)</p>
+  <!-- ═══ 6. HORARIO DE PRÁCTICA ══════════════════════════════════ -->
+  <div class="sec-title"><span class="sec-num">6</span><span class="sec-text">HORARIO DE PRÁCTICA</span></div>
   <table>
     <colgroup><col style="width:18%"><col style="width:30%"><col></colgroup>
     <tr>
@@ -767,31 +614,92 @@
         <label class="chk"><input type="checkbox"> No</label>
       </td>
     </tr>
+    <tr>
+      <td class="lbl">Modalidad de trabajo:</td>
+      <td class="input-cell alt" colspan="2" style="padding:4px 8px;">
+        <label class="chk"><input type="checkbox"> Presencial</label>
+        <label class="chk"><input type="checkbox"> Híbrida</label>
+        <label class="chk"><input type="checkbox"> Virtual</label>
+      </td>
+    </tr>
   </table>
-  <div class="obj-hdr" style="margin-top:4px;">Observaciones del horario:</div>
+
+  <table style="margin-top:4px;">
+    <colgroup><col style="width:22%"><col style="width:30%"><col></colgroup>
+    <tr>
+      <td class="col-hdr">Categoría</td>
+      <td class="col-hdr">Campo</td>
+      <td class="col-hdr">Detalle</td>
+    </tr>
+    <tr>
+      <td class="lbl" rowspan="3" style="text-align:center;">Jornada y horario</td>
+      <td class="lbl">Horario de trabajo:</td>
+      <td class="input-cell"><input type="text" placeholder="Ej. 8:00 a.m. – 12:00 m. / 2:00 p.m. – 6:00 p.m."></td>
+    </tr>
+    <tr>
+      <td class="lbl">Días laborales:</td>
+      <td class="input-cell alt"><input type="text" placeholder="Ej. Lunes a viernes"></td>
+    </tr>
+    <tr>
+      <td class="lbl">Días laborales:</td>
+      <td class="input-cell"><input type="text" placeholder="Ej. Lunes a viernes"></td>
+    </tr>
+    <tr>
+      <td class="lbl" rowspan="3" style="text-align:center;">Ubicación del puesto</td>
+      <td class="lbl">Lugar de desarrollo de la práctica:</td>
+      <td class="input-cell" style="padding:4px 8px;">
+        <select id="sel-lugar-practica" onchange="toggleLugarOtro()" style="width:100%;border:none;background:transparent;font-family:Arial,sans-serif;font-size:9pt;color:var(--negro);outline:none;cursor:pointer;">
+          <option value="">-- Seleccione --</option>
+          <option>Oficina</option>
+          <option>Planta de producción</option>
+          <option>Laboratorio</option>
+          <option>Taller</option>
+          <option>Campo</option>
+          <option>Punto de atención</option>
+          <option>Bodega</option>
+          <option>Entorno clínico</option>
+          <option>Obra</option>
+          <option>Trabajo en sitio</option>
+          <option value="Otro">Otro</option>
+        </select>
+        <input type="text" id="inp-lugar-otro" placeholder="Especifique el lugar..."
+               style="display:none;margin-top:4px;width:100%;border-bottom:1px solid var(--gris-m);font-size:9pt;">
+      </td>
+    </tr>
+    <tr>
+      <td class="lbl">Sede:</td>
+      <td class="input-cell alt"><input type="text" placeholder="Nombre de la sede"></td>
+    </tr>
+    <tr>
+      <td class="lbl">Ciudad:</td>
+      <td class="input-cell"><input type="text" placeholder="Ciudad"></td>
+    </tr>
+    <tr>
+      <td class="lbl" colspan="3" style="font-weight:bold;color:var(--azul);padding:6px 8px;">
+        ¿Qué elementos o herramientas se le suministraron al estudiante/trabajador para el desarrollo de su actividad? <span style="font-weight:normal;font-size:8pt;">(Seleccione todas las que apliquen):</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="input-cell" colspan="3" style="padding:5px 10px;">
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <label class="chk"><input type="checkbox"> Elementos de Protección Personal (EPP) según el riesgo (casco, gafas, guantes, botas, protectores auditivos, etc.).</label>
+          <label class="chk"><input type="checkbox"> Equipos de cómputo y periféricos (computador, mouse, teclado, pantalla adicional).</label>
+          <label class="chk"><input type="checkbox"> Dotación de calzado y vestido de labor (uniforme corporativo).</label>
+          <label class="chk"><input type="checkbox"> Elementos de ergonomía (silla ergonómica, pad mouse con gel, soporte para computador/pies).</label>
+          <label class="chk"><input type="checkbox"> Herramientas o materiales específicos de la actividad (herramientas manuales, instrumentos de medición, insumos médicos, etc.).</label>
+          <label class="chk"><input type="checkbox"> Carnet de identificación institucional / Tarjeta de acceso.</label>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="obj-hdr" style="margin-top:4px;">Observaciones adicionales:</div>
   <div class="obj-body"><textarea style="width:100%;min-height:46px;" placeholder="Describir horario detallado, turnos, días y cualquier observación relevante..."></textarea></div>
 
   <div class="spacer"></div>
 
-  <!-- ═══ 8. COMPROMISOS ══════════════════════════════════════════ -->
-  <div class="sec-title"><span class="sec-num">8</span><span class="sec-text">COMPROMISOS Y OBSERVACIONES INICIALES</span></div>
-
-  <div class="obj-hdr" style="margin-top:4px;">8.1 &nbsp;Compromisos del Practicante (Política ITM Cap. VI, num. 6.3):</div>
-  <div class="obj-body"><textarea style="width:100%;min-height:50px;" placeholder="Escribir compromisos del practicante..."></textarea></div>
-  <div class="spacer"></div>
-  <div class="obj-hdr">8.2 &nbsp;Compromisos del Tutor (Escenario de práctica) – Art. 2.2.6.3.1.11 Decreto 0223/2026:</div>
-  <div class="obj-body"><textarea style="width:100%;min-height:50px;" placeholder="Escribir compromisos del tutor..."></textarea></div>
-  <div class="spacer"></div>
-  <div class="obj-hdr">8.3 &nbsp;Compromisos del Monitor (Oficina de Prácticas ITM) – Art. 2.2.6.3.1.11:</div>
-  <div class="obj-body"><textarea style="width:100%;min-height:50px;" placeholder="Escribir compromisos del monitor..."></textarea></div>
-  <div class="spacer"></div>
-  <div class="obj-hdr">8.4 &nbsp;Observaciones generales de la visita de inicio:</div>
-  <div class="obj-body"><textarea style="width:100%;min-height:50px;" placeholder="Observaciones generales..."></textarea></div>
-
-  <div class="spacer"></div>
-
-  <!-- ═══ 9. DERECHOS Y DEBERES ════════════════════════════════════ -->
-  <div class="sec-title"><span class="sec-num">9</span><span class="sec-text">DERECHOS Y DEBERES BÁSICOS DEL PRACTICANTE</span></div>
+  <!-- ═══ 7. DERECHOS Y DEBERES ════════════════════════════════════ -->
+  <div class="sec-title"><span class="sec-num">7</span><span class="sec-text">DERECHOS Y DEBERES BÁSICOS DEL PRACTICANTE</span></div>
   <p style="font-size:7.5pt;font-style:italic;color:var(--azul);padding:3px 4px;">
     El practicante declara haber sido informado de sus derechos y deberes conforme a la normativa vigente.
   </p>
@@ -832,6 +740,85 @@
   </table>
 
   <div class="spacer"></div>
+
+  <!-- ═══ 8. OBSERVACIONES ═══════════════════════════════════════ -->
+  <div class="sec-title"><span class="sec-num">8</span><span class="sec-text">OBSERVACIONES GENERALES DE LA VISITA DE INICIO</span></div>
+
+  <div class="obj-hdr" style="margin-top:4px;">Observaciones:</div>
+  <div class="obj-body"><textarea style="width:100%;min-height:50px;" placeholder="Observaciones generales..."></textarea></div>
+
+  <div class="spacer"></div>
+
+  <!-- ═══ 9. PLAN DE PRÁCTICAS ═════════════════════════════════════ -->
+  <div class="section-card">
+  <div class="sec-title"><span class="sec-num">9</span><span class="sec-text">PLAN DE PRÁCTICAS</span></div>
+
+  <div class="obj-hdr">Objetivos formativos acordados (Practicante · Tutor · Monitor):</div>
+  <div class="obj-body">
+    <textarea style="width:100%;min-height:50px;" placeholder="Escribir los objetivos formativos acordados..."></textarea>
+  </div>
+
+  <table style="margin-top:4px;">
+    <colgroup><col style="width:10%"><col><col><col></colgroup>
+    <tr>
+      <td class="col-hdr">Período</td>
+      <td class="col-hdr">Actividad Específica</td>
+      <td class="col-hdr">Competencia a Desarrollar</td>
+      <td class="col-hdr">Resultados Esperados</td>
+    </tr>
+    <tr>
+      <td class="lbl" style="text-align:center;">Mes 1</td>
+      <td class="input-cell"><textarea></textarea></td>
+      <td class="input-cell"><textarea></textarea></td>
+      <td class="input-cell"><textarea></textarea></td>
+    </tr>
+    <tr>
+      <td class="lbl" style="text-align:center;background:var(--gris-l);">Mes 2</td>
+      <td class="input-cell alt"><textarea></textarea></td>
+      <td class="input-cell alt"><textarea></textarea></td>
+      <td class="input-cell alt"><textarea></textarea></td>
+    </tr>
+    <tr>
+      <td class="lbl" style="text-align:center;">Mes 3</td>
+      <td class="input-cell"><textarea></textarea></td>
+      <td class="input-cell"><textarea></textarea></td>
+      <td class="input-cell"><textarea></textarea></td>
+    </tr>
+    <tr>
+      <td class="lbl" style="text-align:center;background:var(--gris-l);">Mes 4</td>
+      <td class="input-cell alt"><textarea></textarea></td>
+      <td class="input-cell alt"><textarea></textarea></td>
+      <td class="input-cell alt"><textarea></textarea></td>
+    </tr>
+    <tr>
+      <td class="lbl" style="text-align:center;">Mes 5</td>
+      <td class="input-cell"><textarea></textarea></td>
+      <td class="input-cell"><textarea></textarea></td>
+      <td class="input-cell"><textarea></textarea></td>
+    </tr>
+    <tr>
+      <td class="lbl" style="text-align:center;background:var(--gris-l);">Mes 6</td>
+      <td class="input-cell alt"><textarea></textarea></td>
+      <td class="input-cell alt"><textarea></textarea></td>
+      <td class="input-cell alt"><textarea></textarea></td>
+    </tr>
+    <tr>
+      <td class="lbl" style="text-align:center;font-size:7.5pt;white-space:normal;">Mayor a 6 meses</td>
+      <td class="input-cell" colspan="3" style="padding:4px 8px;">
+        <textarea style="width:100%;min-height:40px;" placeholder="Describir actividades, competencias y resultados esperados para el período mayor a 6 meses..."></textarea>
+      </td>
+    </tr>
+  </table>
+
+  <div class="obj-hdr" style="margin-top:4px;">Descripción de funciones prácticas profesionales:</div>
+  <div class="obj-body"><textarea style="width:100%;min-height:60px;" placeholder="Describir las funciones que desarrollará el practicante durante su práctica profesional..."></textarea></div>
+
+  <div class="obj-hdr" style="margin-top:4px;">Observaciones Monitor / Tutor:</div>
+  <div class="obj-body"><textarea style="width:100%;min-height:50px;" placeholder="Observaciones generales del Monitor y/o Tutor sobre el plan de trabajo..."></textarea></div>
+  </div><!-- /section-card punto 9 -->
+
+  <div class="spacer"></div>
+
   <!-- ═══ REGISTRO FOTOGRÁFICO ════════════════════════════════════ -->
   <div class="sec-title"><span class="sec-num">10</span><span class="sec-text">REGISTRO FOTOGRÁFICO DE LA VISITA</span></div>
 
@@ -948,6 +935,18 @@
 <button class="btn-pdf" onclick="window.print()">⬇&nbsp; Descargar / Imprimir PDF</button>
 
 <script>
+function toggleLugarOtro() {
+  var sel = document.getElementById('sel-lugar-practica');
+  var inp = document.getElementById('inp-lugar-otro');
+  if (sel.value === 'Otro') {
+    inp.style.display = 'block';
+    inp.focus();
+  } else {
+    inp.style.display = 'none';
+    inp.value = '';
+  }
+}
+
 function sincronizarFirmas() {
   const pract   = document.getElementById('inp-nombre-pract');
   const tutor   = document.getElementById('inp-nombre-tutor');
