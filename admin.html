@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Administración · Prácticas ITM</title>
+<style>
+  :root {
+    --azul:   #102D69;
+    --azul-l: #E8EDF5;
+    --verde:  #1B5E20;
+    --verde-l:#E8F5E9;
+    --rojo:   #B71C1C;
+    --rojo-l: #FFEBEE;
+    --gris:   #F4F6F9;
+    --borde:  #C8D5EA;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; font-size: 10pt; background: #dde3ef; min-height: 100vh; }
+
+  /* ── Vistas ── */
+  .view { display: none; }
+  .view.active { display: block; }
+
+  /* ── Centrado login/setup ── */
+  .auth-wrap {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px;
+  }
+  .auth-card {
+    background: #fff; border-radius: 10px; padding: 36px 40px; width: 100%; max-width: 420px;
+    box-shadow: 0 4px 24px rgba(16,45,105,.18);
+  }
+  .auth-card .logo { text-align: center; margin-bottom: 20px; }
+  .auth-card .logo img { height: 60px; }
+  .auth-card h2 { color: var(--azul); font-size: 14pt; text-align: center; margin-bottom: 6px; }
+  .auth-card p.sub { text-align: center; color: #666; font-size: 8.5pt; margin-bottom: 22px; }
+
+  /* ── Formulario ── */
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 8.5pt; font-weight: bold; color: var(--azul); margin-bottom: 4px; }
+  .form-group input, .form-group select {
+    width: 100%; padding: 9px 12px; border: 1.5px solid var(--borde); border-radius: 5px;
+    font-size: 9.5pt; outline: none; transition: border .15s;
+  }
+  .form-group input:focus, .form-group select:focus { border-color: var(--azul); }
+
+  /* ── Botones ── */
+  .btn { padding: 9px 20px; border: none; border-radius: 5px; font-size: 9.5pt; font-weight: bold; cursor: pointer; transition: opacity .15s; }
+  .btn:hover { opacity: .88; }
+  .btn-primary { background: var(--azul); color: #fff; width: 100%; margin-top: 6px; }
+  .btn-success { background: var(--verde); color: #fff; }
+  .btn-danger  { background: var(--rojo); color: #fff; }
+  .btn-ghost   { background: var(--azul-l); color: var(--azul); }
+  .btn-sm { padding: 4px 12px; font-size: 8pt; }
+
+  /* ── Mensaje estado ── */
+  .msg { padding: 8px 12px; border-radius: 4px; font-size: 8.5pt; font-weight: bold; margin-top: 10px; display: none; }
+  .msg.ok    { background: var(--verde-l); color: var(--verde); border: 1.5px solid var(--verde); }
+  .msg.error { background: var(--rojo-l);  color: var(--rojo);  border: 1.5px solid var(--rojo); }
+  .msg.info  { background: var(--azul-l);  color: var(--azul);  border: 1.5px solid var(--borde); }
+
+  /* ── Dashboard layout ── */
+  #view-dashboard { min-height: 100vh; }
+  .dash-header {
+    background: var(--azul); color: #fff; padding: 12px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  }
+  .dash-header h1 { font-size: 12pt; }
+  .dash-header .admin-info { font-size: 8.5pt; opacity: .85; }
+  .dash-body { padding: 24px 28px; }
+
+  /* ── Stats ── */
+  .stats { display: flex; gap: 14px; margin-bottom: 22px; flex-wrap: wrap; }
+  .stat-card {
+    background: #fff; border: 1.5px solid var(--borde); border-radius: 8px;
+    padding: 14px 20px; min-width: 140px; text-align: center;
+    box-shadow: 0 1px 5px rgba(16,45,105,.08);
+  }
+  .stat-card .stat-num { font-size: 22pt; font-weight: bold; color: var(--azul); }
+  .stat-card .stat-lbl { font-size: 8pt; color: #666; margin-top: 2px; }
+
+  /* ── Tabla usuarios ── */
+  .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .section-header h2 { font-size: 11pt; color: var(--azul); }
+  .table-wrap { background: #fff; border-radius: 8px; border: 1.5px solid var(--borde); overflow: hidden; box-shadow: 0 1px 5px rgba(16,45,105,.08); }
+  table.usr-table { width: 100%; border-collapse: collapse; }
+  table.usr-table th { background: var(--azul); color: #fff; padding: 8px 12px; font-size: 8.5pt; text-align: left; }
+  table.usr-table td { padding: 8px 12px; font-size: 8.5pt; border-bottom: 1px solid var(--borde); vertical-align: middle; }
+  table.usr-table tr:last-child td { border-bottom: none; }
+  table.usr-table tr:nth-child(even) td { background: var(--gris); }
+  .badge-activo   { background: var(--verde-l); color: var(--verde); padding: 2px 10px; border-radius: 12px; font-size: 7.5pt; font-weight: bold; }
+  .badge-inactivo { background: var(--rojo-l);  color: var(--rojo);  padding: 2px 10px; border-radius: 12px; font-size: 7.5pt; font-weight: bold; }
+  .acciones { display: flex; gap: 5px; }
+
+  /* ── Modal ── */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 100;
+    display: none; align-items: center; justify-content: center; padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: #fff; border-radius: 10px; padding: 28px 32px; width: 100%; max-width: 480px;
+    box-shadow: 0 6px 30px rgba(0,0,0,.25); max-height: 90vh; overflow-y: auto;
+  }
+  .modal-box h3 { color: var(--azul); font-size: 11pt; margin-bottom: 18px; border-bottom: 2px solid var(--azul-l); padding-bottom: 8px; }
+  .modal-footer { display: flex; gap: 8px; justify-content: flex-end; margin-top: 18px; border-top: 1px solid var(--borde); padding-top: 14px; }
+
+  /* ── Checkboxes guías ── */
+  .guias-chk { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .guias-chk label { display: flex; align-items: center; gap: 5px; font-size: 8.5pt; cursor: pointer; background: var(--azul-l); padding: 4px 10px; border-radius: 12px; border: 1.5px solid var(--borde); }
+  .guias-chk label input { accent-color: var(--azul); }
+  .guias-chk label:has(input:checked) { background: var(--azul); color: #fff; border-color: var(--azul); }
+
+  /* ── Password visibility ── */
+  .inp-pass-wrap { position: relative; }
+  .inp-pass-wrap input { padding-right: 36px; }
+  .inp-pass-wrap .toggle-pass {
+    position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; cursor: pointer; font-size: 13pt; color: #888; padding: 0;
+  }
+
+  /* ── Empty state ── */
+  .empty-state { text-align: center; padding: 40px; color: #999; font-size: 9pt; }
+
+  @media (max-width: 600px) {
+    .dash-body { padding: 14px; }
+    .stats { gap: 8px; }
+    .modal-box { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     VISTA: SETUP INICIAL (primer administrador)
+══════════════════════════════════════════════════ -->
+<div id="view-setup" class="view">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="logo">
+        <img src="Imagenes/LOGO ITM.png" alt="ITM" onerror="this.style.display='none'">
+      </div>
+      <h2>⚙️ Configuración inicial</h2>
+      <p class="sub">Cree el primer administrador del sistema de prácticas profesionales.</p>
+
+      <div class="form-group">
+        <label>Nombre completo</label>
+        <input type="text" id="setup-nombre" placeholder="Ej: Coordinadora Prácticas ITM">
+      </div>
+      <div class="form-group">
+        <label>Usuario administrador</label>
+        <input type="text" id="setup-username" placeholder="Ej: admin_itm" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label>Contraseña</label>
+        <div class="inp-pass-wrap">
+          <input type="password" id="setup-pass" placeholder="Mínimo 8 caracteres" autocomplete="new-password">
+          <button class="toggle-pass" type="button" onclick="togglePass('setup-pass', this)">👁</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Confirmar contraseña</label>
+        <div class="inp-pass-wrap">
+          <input type="password" id="setup-pass2" placeholder="Repita la contraseña" autocomplete="new-password">
+          <button class="toggle-pass" type="button" onclick="togglePass('setup-pass2', this)">👁</button>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="crearAdminInicial()">Crear administrador</button>
+      <div id="setup-msg" class="msg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     VISTA: LOGIN
+══════════════════════════════════════════════════ -->
+<div id="view-login" class="view">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="logo">
+        <img src="Imagenes/LOGO ITM.png" alt="ITM" onerror="this.style.display='none'">
+      </div>
+      <h2>🔐 Portal Administración</h2>
+      <p class="sub">Prácticas Profesionales · ITM</p>
+
+      <div class="form-group">
+        <label>Usuario</label>
+        <input type="text" id="login-username" placeholder="Usuario administrador" autocomplete="username"
+          onkeydown="if(event.key==='Enter') loginAdmin()">
+      </div>
+      <div class="form-group">
+        <label>Contraseña</label>
+        <div class="inp-pass-wrap">
+          <input type="password" id="login-pass" placeholder="Contraseña" autocomplete="current-password"
+            onkeydown="if(event.key==='Enter') loginAdmin()">
+          <button class="toggle-pass" type="button" onclick="togglePass('login-pass', this)">👁</button>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="loginAdmin()">Ingresar</button>
+      <div id="login-msg" class="msg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     VISTA: DASHBOARD
+══════════════════════════════════════════════════ -->
+<div id="view-dashboard" class="view">
+  <div class="dash-header">
+    <div>
+      <h1>🏛️ Administración · Prácticas Profesionales ITM</h1>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <span class="admin-info">👤 <strong id="admin-nombre-display"></strong></span>
+      <button class="btn btn-ghost btn-sm" onclick="cerrarSesion()">Cerrar sesión</button>
+    </div>
+  </div>
+
+  <div class="dash-body">
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-num" id="stat-total">—</div>
+        <div class="stat-lbl">Usuarios totales</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-activos" style="color:var(--verde);">—</div>
+        <div class="stat-lbl">Usuarios activos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-inactivos" style="color:var(--rojo);">—</div>
+        <div class="stat-lbl">Inactivos</div>
+      </div>
+    </div>
+
+    <!-- Tabla usuarios -->
+    <div class="section-header">
+      <h2>👥 Usuarios del sistema</h2>
+      <button class="btn btn-success btn-sm" onclick="abrirModalNuevo()">＋ Nuevo usuario</button>
+    </div>
+    <div id="dash-msg" class="msg" style="margin-bottom:10px;"></div>
+    <div class="table-wrap">
+      <table class="usr-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Usuario</th>
+            <th>Correo</th>
+            <th>Guías</th>
+            <th>Estado</th>
+            <th>Creado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-usuarios">
+          <tr><td colspan="7" class="empty-state">Cargando usuarios…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     MODAL: CREAR / EDITAR USUARIO
+══════════════════════════════════════════════════ -->
+<div id="modal-usuario" class="modal-overlay" onclick="if(event.target===this) cerrarModal()">
+  <div class="modal-box">
+    <h3 id="modal-titulo">Nuevo usuario</h3>
+
+    <input type="hidden" id="modal-doc-id">
+
+    <div class="form-group">
+      <label>Nombre completo *</label>
+      <input type="text" id="m-nombre" placeholder="Nombre completo del usuario">
+    </div>
+    <div class="form-group">
+      <label>Nombre de usuario *</label>
+      <input type="text" id="m-username" placeholder="Ej: jperez" autocomplete="off">
+    </div>
+    <div class="form-group">
+      <label>Correo electrónico</label>
+      <input type="email" id="m-email" placeholder="correo@itm.edu.co">
+    </div>
+    <div class="form-group">
+      <label id="m-pass-lbl">Contraseña *</label>
+      <div class="inp-pass-wrap">
+        <input type="password" id="m-pass" placeholder="Contraseña" autocomplete="new-password">
+        <button class="toggle-pass" type="button" onclick="togglePass('m-pass', this)">👁</button>
+      </div>
+      <div style="font-size:7.5pt;color:#888;margin-top:3px;" id="m-pass-hint"></div>
+    </div>
+    <div class="form-group">
+      <label>Rol</label>
+      <select id="m-rol">
+        <option value="monitor">Monitor</option>
+        <option value="coordinador">Coordinador</option>
+        <option value="practicante">Practicante</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Guías permitidas</label>
+      <div class="guias-chk">
+        <label><input type="checkbox" value="guia1" id="m-g1"> Guía 1</label>
+        <label><input type="checkbox" value="guia2" id="m-g2"> Guía 2</label>
+        <label><input type="checkbox" value="guia3" id="m-g3"> Guía 3</label>
+        <label><input type="checkbox" value="guia4" id="m-g4"> Guía 4</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Estado</label>
+      <select id="m-activo">
+        <option value="true">Activo</option>
+        <option value="false">Inactivo</option>
+      </select>
+    </div>
+
+    <div id="modal-msg" class="msg"></div>
+
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="cerrarModal()">Cancelar</button>
+      <button class="btn btn-primary" id="btn-guardar-user" style="width:auto;" onclick="guardarUsuario()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     MODAL: CONFIRMAR ELIMINAR
+══════════════════════════════════════════════════ -->
+<div id="modal-eliminar" class="modal-overlay" onclick="if(event.target===this) cerrarModalEliminar()">
+  <div class="modal-box" style="max-width:360px;">
+    <h3>⚠️ Eliminar usuario</h3>
+    <p style="font-size:9pt;color:#555;margin:10px 0 20px;">¿Está seguro de eliminar al usuario <strong id="del-nombre"></strong>? Esta acción no se puede deshacer.</p>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="cerrarModalEliminar()">Cancelar</button>
+      <button class="btn btn-danger" style="width:auto;" onclick="confirmarEliminar()">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+import {
+  getFirestore, collection, doc, getDocs, getDoc, setDoc, addDoc, deleteDoc, query, orderBy
+} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+
+// ── Config Firebase ───────────────────────────────────────────────────────
+const firebaseConfig = {
+  apiKey:            "AIzaSyAsjH3q5_WhaKYcqTRwDRktY9cShfv3X_g",
+  authDomain:        "gifted-dreamer-402613.firebaseapp.com",
+  projectId:         "gifted-dreamer-402613",
+  storageBucket:     "gifted-dreamer-402613.firebasestorage.app",
+  messagingSenderId: "397197163762",
+  appId:             "1:397197163762:web:da2db1c38954db19da246b"
+};
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
+
+const COL_ADMIN   = 'admin_usuarios';
+const COL_USERS   = 'usuarios_guias';
+
+// ── Hash SHA-256 (Web Crypto API nativa) ─────────────────────────────────
+async function sha256(text) {
+  const buf  = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+// ── Mostrar vista ─────────────────────────────────────────────────────────
+function mostrarVista(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function mostrarMsg(id, texto, tipo) {
+  const el = document.getElementById(id);
+  el.textContent = texto;
+  el.className = 'msg ' + tipo;
+  el.style.display = 'block';
+}
+
+// ── INICIO: verificar si existe admin ────────────────────────────────────
+async function init() {
+  try {
+    const snap = await getDocs(collection(db, COL_ADMIN));
+    if (snap.empty) {
+      mostrarVista('view-setup');
+    } else {
+      const sesion = sessionStorage.getItem('itm_admin');
+      if (sesion) {
+        const data = JSON.parse(sesion);
+        document.getElementById('admin-nombre-display').textContent = data.nombre;
+        mostrarVista('view-dashboard');
+        cargarUsuarios();
+      } else {
+        mostrarVista('view-login');
+      }
+    }
+  } catch (e) {
+    mostrarVista('view-login');
+    console.error('Error init:', e);
+  }
+}
+
+// ── SETUP: crear primer administrador ────────────────────────────────────
+window.crearAdminInicial = async function() {
+  const nombre   = document.getElementById('setup-nombre').value.trim();
+  const username = document.getElementById('setup-username').value.trim().toLowerCase();
+  const pass     = document.getElementById('setup-pass').value;
+  const pass2    = document.getElementById('setup-pass2').value;
+
+  if (!nombre || !username || !pass) return mostrarMsg('setup-msg', '⚠️ Complete todos los campos.', 'error');
+  if (pass.length < 8)              return mostrarMsg('setup-msg', '⚠️ La contraseña debe tener mínimo 8 caracteres.', 'error');
+  if (pass !== pass2)               return mostrarMsg('setup-msg', '⚠️ Las contraseñas no coinciden.', 'error');
+
+  mostrarMsg('setup-msg', '⏳ Creando administrador…', 'info');
+  try {
+    const hash = await sha256(pass);
+    await setDoc(doc(db, COL_ADMIN, username), {
+      nombre, username, passwordHash: hash,
+      creadoEn: new Date().toISOString(), activo: true
+    });
+    mostrarMsg('setup-msg', '✅ Administrador creado. Redirigiendo…', 'ok');
+    setTimeout(() => {
+      sessionStorage.setItem('itm_admin', JSON.stringify({ username, nombre }));
+      document.getElementById('admin-nombre-display').textContent = nombre;
+      mostrarVista('view-dashboard');
+      cargarUsuarios();
+    }, 1200);
+  } catch (e) {
+    mostrarMsg('setup-msg', '❌ Error: ' + e.message, 'error');
+  }
+};
+
+// ── LOGIN ─────────────────────────────────────────────────────────────────
+window.loginAdmin = async function() {
+  const username = document.getElementById('login-username').value.trim().toLowerCase();
+  const pass     = document.getElementById('login-pass').value;
+
+  if (!username || !pass) return mostrarMsg('login-msg', '⚠️ Ingrese usuario y contraseña.', 'error');
+  mostrarMsg('login-msg', '⏳ Verificando…', 'info');
+
+  try {
+    const snap = await getDoc(doc(db, COL_ADMIN, username));
+    if (!snap.exists()) return mostrarMsg('login-msg', '❌ Usuario no encontrado.', 'error');
+
+    const data = snap.data();
+    if (!data.activo)  return mostrarMsg('login-msg', '❌ Cuenta desactivada.', 'error');
+
+    const hash = await sha256(pass);
+    if (hash !== data.passwordHash) return mostrarMsg('login-msg', '❌ Contraseña incorrecta.', 'error');
+
+    sessionStorage.setItem('itm_admin', JSON.stringify({ username, nombre: data.nombre }));
+    document.getElementById('admin-nombre-display').textContent = data.nombre;
+    mostrarVista('view-dashboard');
+    cargarUsuarios();
+  } catch (e) {
+    mostrarMsg('login-msg', '❌ Error: ' + e.message, 'error');
+  }
+};
+
+// ── CERRAR SESIÓN ─────────────────────────────────────────────────────────
+window.cerrarSesion = function() {
+  sessionStorage.removeItem('itm_admin');
+  document.getElementById('login-username').value = '';
+  document.getElementById('login-pass').value = '';
+  mostrarVista('view-login');
+};
+
+// ── CARGAR USUARIOS ───────────────────────────────────────────────────────
+async function cargarUsuarios() {
+  const tbody = document.getElementById('tabla-usuarios');
+  tbody.innerHTML = '<tr><td colspan="7" class="empty-state">Cargando…</td></tr>';
+  try {
+    const snap = await getDocs(query(collection(db, COL_USERS), orderBy('creadoEn', 'desc')));
+    const users = [];
+    snap.forEach(d => users.push({ id: d.id, ...d.data() }));
+
+    // Stats
+    document.getElementById('stat-total').textContent    = users.length;
+    document.getElementById('stat-activos').textContent  = users.filter(u => u.activo).length;
+    document.getElementById('stat-inactivos').textContent= users.filter(u => !u.activo).length;
+
+    if (users.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="7" class="empty-state">No hay usuarios registrados. Cree el primero.</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = users.map(u => `
+      <tr>
+        <td><strong>${u.nombre || '—'}</strong></td>
+        <td><code style="background:#f0f4ff;padding:2px 6px;border-radius:3px;">${u.username || '—'}</code></td>
+        <td>${u.email || '—'}</td>
+        <td style="font-size:7.5pt;">${(u.guiasPermitidas||[]).map(g=>`<span style="background:var(--azul);color:#fff;padding:1px 7px;border-radius:10px;margin-right:2px;">${g}</span>`).join('')||'—'}</td>
+        <td><span class="${u.activo?'badge-activo':'badge-inactivo'}">${u.activo?'Activo':'Inactivo'}</span></td>
+        <td style="font-size:7.5pt;color:#888;">${u.creadoEn ? u.creadoEn.slice(0,10) : '—'}</td>
+        <td>
+          <div class="acciones">
+            <button class="btn btn-ghost btn-sm" onclick="window._editarUsuario('${u.id}')">✏️ Editar</button>
+            <button class="btn btn-danger btn-sm" onclick="window._pedirEliminar('${u.id}','${(u.nombre||'').replace(/'/g,"\\'")}')">🗑</button>
+          </div>
+        </td>
+      </tr>
+    `).join('');
+  } catch (e) {
+    tbody.innerHTML = `<tr><td colspan="7" class="empty-state">❌ Error al cargar: ${e.message}</td></tr>`;
+  }
+}
+
+// ── MODAL NUEVO USUARIO ───────────────────────────────────────────────────
+window.abrirModalNuevo = function() {
+  document.getElementById('modal-titulo').textContent = 'Nuevo usuario';
+  document.getElementById('modal-doc-id').value = '';
+  document.getElementById('m-nombre').value   = '';
+  document.getElementById('m-username').value = '';
+  document.getElementById('m-email').value    = '';
+  document.getElementById('m-pass').value     = '';
+  document.getElementById('m-rol').value      = 'monitor';
+  document.getElementById('m-activo').value   = 'true';
+  document.getElementById('m-pass-lbl').textContent = 'Contraseña *';
+  document.getElementById('m-pass-hint').textContent = '';
+  document.getElementById('m-pass').placeholder = 'Contraseña';
+  document.getElementById('m-pass').required = true;
+  ['m-g1','m-g2','m-g3','m-g4'].forEach(id => document.getElementById(id).checked = true);
+  document.getElementById('modal-msg').style.display = 'none';
+  document.getElementById('modal-usuario').classList.add('open');
+};
+
+// ── MODAL EDITAR USUARIO ──────────────────────────────────────────────────
+window._editarUsuario = async function(docId) {
+  try {
+    const snap = await getDoc(doc(db, COL_USERS, docId));
+    if (!snap.exists()) return;
+    const u = snap.data();
+
+    document.getElementById('modal-titulo').textContent = 'Editar usuario';
+    document.getElementById('modal-doc-id').value = docId;
+    document.getElementById('m-nombre').value   = u.nombre   || '';
+    document.getElementById('m-username').value = u.username || '';
+    document.getElementById('m-email').value    = u.email    || '';
+    document.getElementById('m-pass').value     = '';
+    document.getElementById('m-pass-lbl').textContent = 'Nueva contraseña (dejar en blanco para no cambiar)';
+    document.getElementById('m-pass-hint').textContent = 'Solo complete este campo si desea cambiar la contraseña.';
+    document.getElementById('m-pass').placeholder = 'Sin cambios';
+    document.getElementById('m-pass').required = false;
+    document.getElementById('m-rol').value    = u.rol    || 'monitor';
+    document.getElementById('m-activo').value = u.activo ? 'true' : 'false';
+    const guias = u.guiasPermitidas || [];
+    document.getElementById('m-g1').checked = guias.includes('guia1');
+    document.getElementById('m-g2').checked = guias.includes('guia2');
+    document.getElementById('m-g3').checked = guias.includes('guia3');
+    document.getElementById('m-g4').checked = guias.includes('guia4');
+    document.getElementById('modal-msg').style.display = 'none';
+    document.getElementById('modal-usuario').classList.add('open');
+  } catch (e) {
+    mostrarMsg('dash-msg', '❌ Error al cargar usuario: ' + e.message, 'error');
+  }
+};
+
+// ── GUARDAR USUARIO (crear / editar) ─────────────────────────────────────
+window.guardarUsuario = async function() {
+  const docId    = document.getElementById('modal-doc-id').value;
+  const nombre   = document.getElementById('m-nombre').value.trim();
+  const username = document.getElementById('m-username').value.trim().toLowerCase();
+  const email    = document.getElementById('m-email').value.trim();
+  const pass     = document.getElementById('m-pass').value;
+  const rol      = document.getElementById('m-rol').value;
+  const activo   = document.getElementById('m-activo').value === 'true';
+  const guiasPermitidas = ['guia1','guia2','guia3','guia4']
+    .filter(g => document.getElementById('m-' + g.replace('guia','g')).checked);
+
+  if (!nombre || !username) return mostrarMsg('modal-msg', '⚠️ Nombre y usuario son obligatorios.', 'error');
+  if (!docId && !pass)      return mostrarMsg('modal-msg', '⚠️ La contraseña es obligatoria para nuevos usuarios.', 'error');
+  if (pass && pass.length < 8) return mostrarMsg('modal-msg', '⚠️ La contraseña debe tener mínimo 8 caracteres.', 'error');
+
+  mostrarMsg('modal-msg', '⏳ Guardando…', 'info');
+  try {
+    const datos = {
+      nombre, username, email, rol, activo, guiasPermitidas,
+      actualizadoEn: new Date().toISOString()
+    };
+
+    if (pass) {
+      datos.passwordHash = await sha256(pass);
+    }
+
+    if (docId) {
+      await setDoc(doc(db, COL_USERS, docId), datos, { merge: true });
+    } else {
+      datos.creadoEn = new Date().toISOString();
+      datos.creadoPor = JSON.parse(sessionStorage.getItem('itm_admin') || '{}').username || 'admin';
+      // Verificar si ya existe username
+      const existe = await getDoc(doc(db, COL_USERS, username));
+      if (existe.exists()) return mostrarMsg('modal-msg', '❌ El nombre de usuario ya existe.', 'error');
+      await setDoc(doc(db, COL_USERS, username), datos);
+    }
+
+    mostrarMsg('modal-msg', '✅ Usuario guardado correctamente.', 'ok');
+    setTimeout(() => { cerrarModal(); cargarUsuarios(); }, 900);
+  } catch (e) {
+    mostrarMsg('modal-msg', '❌ Error: ' + e.message, 'error');
+  }
+};
+
+// ── ELIMINAR ──────────────────────────────────────────────────────────────
+let _delId = null;
+window._pedirEliminar = function(id, nombre) {
+  _delId = id;
+  document.getElementById('del-nombre').textContent = nombre;
+  document.getElementById('modal-eliminar').classList.add('open');
+};
+window.confirmarEliminar = async function() {
+  if (!_delId) return;
+  try {
+    await deleteDoc(doc(db, COL_USERS, _delId));
+    cerrarModalEliminar();
+    cargarUsuarios();
+  } catch (e) {
+    alert('Error al eliminar: ' + e.message);
+  }
+};
+window.cerrarModalEliminar = function() {
+  _delId = null;
+  document.getElementById('modal-eliminar').classList.remove('open');
+};
+
+// ── CERRAR MODAL USUARIO ──────────────────────────────────────────────────
+window.cerrarModal = function() {
+  document.getElementById('modal-usuario').classList.remove('open');
+};
+
+// ── TOGGLE PASSWORD VISIBILITY ────────────────────────────────────────────
+window.togglePass = function(inputId, btn) {
+  const inp = document.getElementById(inputId);
+  if (inp.type === 'password') { inp.type = 'text'; btn.textContent = '🙈'; }
+  else                         { inp.type = 'password'; btn.textContent = '👁'; }
+};
+
+// ── ARRANCAR ──────────────────────────────────────────────────────────────
+init();
+</script>
+</body>
+</html>

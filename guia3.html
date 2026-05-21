@@ -214,6 +214,7 @@
     body { background:none; }
     .tw { box-shadow: none; }
     .btn-pdf { display:none; }
+    .fb-bar  { display:none; }
     .page { margin:0; box-shadow:none; padding: 3mm 4mm; width:100%; min-height:unset; }
     input[type="text"], textarea { border-bottom:1px solid #bbb !important; }
     select { -webkit-appearance:none; appearance:none; }
@@ -291,7 +292,7 @@
     </tr>
     <tr>
       <td class="lbl">Número de identificación:</td>
-      <td class="inp alt"><input type="text" placeholder="Cédula / Tarjeta de identidad"></td>
+      <td class="inp alt"><input type="text" id="inp-cedula" placeholder="Cédula / Tarjeta de identidad"></td>
     </tr>
     <tr>
       <td class="lbl">Facultad:</td>
@@ -675,7 +676,23 @@
 
 </div><!-- /page -->
 
+<!-- ── BARRA FIREBASE (no imprime) ──────────────────────────────────── -->
+<div class="fb-bar" style="width:216mm;margin:0 auto 4mm;display:flex;flex-wrap:wrap;gap:6px;align-items:center;background:#E8EDF5;border:1.5px solid #C8D5EA;border-radius:6px;padding:8px 12px;">
+  <span style="font-weight:bold;font-size:9pt;color:#102D69;flex-shrink:0;">🗄️ Base de datos:</span>
+  <button onclick="window._fbGuardar()" style="padding:6px 14px;background:#102D69;color:#fff;font-size:8.5pt;font-weight:bold;border:none;border-radius:4px;cursor:pointer;">💾 Guardar</button>
+  <input id="buscar-cedula" type="text" placeholder="Cédula para buscar…" style="padding:5px 8px;font-size:8.5pt;border:1.5px solid #C8D5EA;border-radius:4px;width:160px;outline:none;">
+  <button onclick="window._fbCargar()" style="padding:6px 14px;background:#1565C0;color:#fff;font-size:8.5pt;font-weight:bold;border:none;border-radius:4px;cursor:pointer;">🔍 Cargar</button>
+  <div id="fb-msg" style="display:none;"></div>
+</div>
+
 <button class="btn-pdf" onclick="window.print()">⬇&nbsp; Descargar / Imprimir PDF</button>
+
+<script type="module">
+  import { guardarGuia, cargarGuia } from './js/firebase-practicas.js';
+  const COL = 'guia3_evaluacion';
+  window._fbGuardar = () => guardarGuia(COL);
+  window._fbCargar  = () => cargarGuia(COL);
+</script>
 
 <script>
 // ── Sincronizar monitor en firma ────────────────────────────────

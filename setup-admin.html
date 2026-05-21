@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Setup Administrador · ITM</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #dde3ef; min-height: 100vh;
+    display: flex; align-items: center; justify-content: center; }
+  .card { background: #fff; border-radius: 10px; padding: 36px 40px; max-width: 420px; width: 100%;
+    box-shadow: 0 4px 24px rgba(16,45,105,.18); text-align: center; }
+  .card img { height: 60px; margin-bottom: 16px; }
+  h2 { color: #102D69; margin-bottom: 8px; }
+  p  { color: #555; font-size: 9.5pt; margin-bottom: 20px; }
+  .msg { padding: 12px 16px; border-radius: 6px; font-size: 9.5pt; font-weight: bold; margin-top: 14px; }
+  .ok    { background: #E8F5E9; color: #1B5E20; border: 1.5px solid #1B5E20; }
+  .error { background: #FFEBEE; color: #B71C1C; border: 1.5px solid #B71C1C; }
+  .info  { background: #E3F2FD; color: #1565C0; border: 1.5px solid #1565C0; }
+  .btn { display: inline-block; margin-top: 16px; padding: 10px 24px; background: #102D69;
+    color: #fff; border: none; border-radius: 5px; font-size: 9.5pt; font-weight: bold;
+    cursor: pointer; text-decoration: none; }
+  .btn:hover { background: #0b2050; }
+</style>
+</head>
+<body>
+<div class="card">
+  <img src="Imagenes/LOGO ITM.png" alt="ITM" onerror="this.style.display='none'">
+  <h2>⚙️ Creando administrador</h2>
+  <p>Configurando el usuario administrador inicial del sistema de prácticas profesionales ITM.</p>
+  <div id="msg" class="msg info">⏳ Iniciando configuración…</div>
+  <div id="acciones" style="display:none;">
+    <a href="admin.html" class="btn">🔐 Ir al portal de administración</a>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+import { getFirestore, doc, setDoc, getDoc }
+  from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+
+const firebaseConfig = {
+  apiKey:            "AIzaSyAsjH3q5_WhaKYcqTRwDRktY9cShfv3X_g",
+  authDomain:        "gifted-dreamer-402613.firebaseapp.com",
+  projectId:         "gifted-dreamer-402613",
+  storageBucket:     "gifted-dreamer-402613.firebasestorage.app",
+  messagingSenderId: "397197163762",
+  appId:             "1:397197163762:web:da2db1c38954db19da246b"
+};
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
+
+async function sha256(text) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+function setMsg(texto, tipo) {
+  const el = document.getElementById('msg');
+  el.textContent = texto;
+  el.className = 'msg ' + tipo;
+}
+
+async function crearAdmin() {
+  const ADMIN = {
+    nombre:   'Maritza Medina Giraldo',
+    username: 'maritzamedina',
+    email:    'maritzamedina@itm.edu.co',
+    password: 'Medina123*'
+  };
+
+  try {
+    setMsg('⏳ Verificando si el administrador ya existe…', 'info');
+
+    const existe = await getDoc(doc(db, 'admin_usuarios', ADMIN.username));
+    if (existe.exists()) {
+      setMsg('ℹ️ El administrador ya existe. No se realizaron cambios.', 'info');
+      document.getElementById('acciones').style.display = 'block';
+      return;
+    }
+
+    setMsg('⏳ Generando hash de contraseña…', 'info');
+    const passwordHash = await sha256(ADMIN.password);
+
+    setMsg('⏳ Guardando en Firestore…', 'info');
+    await setDoc(doc(db, 'admin_usuarios', ADMIN.username), {
+      nombre:       ADMIN.nombre,
+      username:     ADMIN.username,
+      email:        ADMIN.email,
+      passwordHash: passwordHash,
+      activo:       true,
+      creadoEn:     new Date().toISOString()
+    });
+
+    setMsg('✅ Administrador creado exitosamente.', 'ok');
+    document.getElementById('acciones').style.display = 'block';
+
+    // Redirigir automáticamente en 2 segundos
+    setTimeout(() => { window.location.href = 'admin.html'; }, 2000);
+
+  } catch (e) {
+    setMsg('❌ Error: ' + e.message, 'error');
+    console.error(e);
+  }
+}
+
+crearAdmin();
+</script>
+</body>
+</html>
