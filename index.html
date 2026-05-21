@@ -3,49 +3,154 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Índice de guías · Prácticas Profesionales ITM</title>
+  <title>Prácticas Profesionales · ITM</title>
   <style>
     :root {
-      --azul: #102D69;
-      --azul-claro: #1A3F8F;
-      --azul-fondo: #E8EDF5;
-      --azul-l: #F2F5FB;
+      --azul:   #102D69;
+      --azul-c: #1A3F8F;
+      --azul-l: #E8EDF5;
+      --azul-f: #F2F5FB;
       --acento: #5B8DD9;
-      --gris: #6B7A8D;
-      --gris-claro: #F4F6F9;
+      --gris:   #6B7A8D;
+      --gris-c: #F4F6F9;
       --blanco: #FFFFFF;
-      --negro: #1A1A1A;
+      --negro:  #1A1A1A;
+      --verde:  #1B5E20;
+      --verde-l:#E8F5E9;
+      --rojo:   #B71C1C;
+      --rojo-l: #FFEBEE;
+      --borde:  #C8D5EA;
     }
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
-      min-height: 100vh;
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(180deg, var(--azul-fondo) 0%, var(--blanco) 100%);
+      min-height: 100vh;
+      background: linear-gradient(180deg, var(--azul-l) 0%, var(--blanco) 100%);
       color: var(--negro);
     }
+
+    /* ── Vistas ── */
+    .view { display: none; }
+    .view.active { display: block; }
+
+    /* ══════════════════════════════════════
+       VISTA LOGIN
+    ══════════════════════════════════════ */
+    #view-login {
+      min-height: 100vh;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    #view-login.active { display: flex; }
+
+    .login-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 40px 44px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 6px 32px rgba(16,45,105,.16);
+    }
+    .login-logo { text-align: center; margin-bottom: 20px; }
+    .login-logo img { height: 64px; }
+    .login-card h2 {
+      color: var(--azul);
+      font-size: 1.25rem;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+    .login-card .sub {
+      text-align: center;
+      color: var(--gris);
+      font-size: .875rem;
+      margin-bottom: 28px;
+    }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--azul);
+      margin-bottom: 5px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid var(--borde);
+      border-radius: 7px;
+      font-size: .95rem;
+      outline: none;
+      transition: border .15s;
+      font-family: inherit;
+    }
+    .form-group input:focus { border-color: var(--azul); }
+    .inp-pass-wrap { position: relative; }
+    .inp-pass-wrap input { padding-right: 40px; }
+    .toggle-pass {
+      position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; cursor: pointer; font-size: 1rem; color: #888; padding: 0;
+    }
+    .btn-login {
+      width: 100%; padding: 11px; background: var(--azul);
+      color: #fff; border: none; border-radius: 7px;
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      transition: background .15s; margin-top: 4px;
+    }
+    .btn-login:hover { background: #0b2050; }
+    .login-msg {
+      padding: 9px 14px; border-radius: 6px; font-size: .85rem;
+      font-weight: bold; margin-top: 12px; display: none;
+    }
+    .login-msg.ok    { background:var(--verde-l); color:var(--verde); border:1.5px solid var(--verde); }
+    .login-msg.error { background:var(--rojo-l);  color:var(--rojo);  border:1.5px solid var(--rojo); }
+    .login-msg.info  { background:var(--azul-l);  color:var(--azul);  border:1.5px solid var(--borde); }
+
+    /* ══════════════════════════════════════
+       VISTA PORTAL (índice de guías)
+    ══════════════════════════════════════ */
+    #view-portal { display: none; flex-direction: column; min-height: 100vh; }
+    #view-portal.active { display: flex; }
+
     header {
       background: var(--azul);
       color: #fff;
-      padding: 28px 20px;
-      text-align: center;
+      padding: 22px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       box-shadow: 0 4px 18px rgba(16,45,105,.18);
+      flex-wrap: wrap;
+      gap: 12px;
     }
-    header h1 {
-      margin: 0 0 8px;
-      font-size: 1.75rem;
-      letter-spacing: .2px;
+    .header-left h1 { font-size: 1.35rem; margin-bottom: 2px; }
+    .header-left p  { color: rgba(255,255,255,.78); font-size: .88rem; }
+    .header-right {
+      display: flex; align-items: center; gap: 12px; flex-shrink: 0;
     }
-    header p {
-      margin: 0;
-      color: rgba(255,255,255,.82);
-      font-size: .95rem;
-      line-height: 1.5;
+    .user-badge {
+      background: rgba(255,255,255,.15);
+      border: 1.5px solid rgba(255,255,255,.3);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: .82rem;
+      color: #fff;
     }
+    .btn-logout {
+      padding: 6px 16px; background: rgba(255,255,255,.18);
+      border: 1.5px solid rgba(255,255,255,.4);
+      color: #fff; border-radius: 20px;
+      font-size: .82rem; font-weight: 700;
+      cursor: pointer; transition: background .15s;
+    }
+    .btn-logout:hover { background: rgba(255,255,255,.3); }
+
     main {
       max-width: 1080px;
-      margin: 24px auto 40px;
+      margin: 28px auto 40px;
       padding: 0 18px;
+      width: 100%;
     }
     .grid {
       display: grid;
@@ -58,102 +163,252 @@
       border-radius: 18px;
       padding: 24px;
       box-shadow: 0 8px 26px rgba(16,45,105,.08);
-      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      transition: transform .18s, box-shadow .18s, border-color .18s;
     }
     .card:hover {
       transform: translateY(-2px);
       border-color: var(--acento);
       box-shadow: 0 14px 30px rgba(16,45,105,.14);
     }
-    .card h2 {
-      margin: 0 0 10px;
-      font-size: 1.1rem;
-      color: var(--azul);
+    .card.bloqueada {
+      opacity: .5; pointer-events: none; filter: grayscale(.5);
     }
+    .card h2 { margin: 0 0 10px; font-size: 1.05rem; color: var(--azul); }
     .code {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 14px;
-      font-size: .82rem;
-      color: var(--gris);
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-bottom: 14px; font-size: .82rem; color: var(--gris);
     }
     .code span {
-      background: var(--azul-l);
-      color: var(--azul);
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-weight: 700;
+      background: var(--azul-f); color: var(--azul);
+      padding: 4px 10px; border-radius: 999px; font-weight: 700;
     }
-    .card p {
-      margin: 0 0 20px;
-      color: var(--gris);
-      line-height: 1.6;
-      font-size: .95rem;
+    .card p { margin: 0 0 20px; color: var(--gris); line-height: 1.6; font-size: .93rem; }
+    .btn-guia {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 8px; padding: 11px 18px; background: var(--azul-c);
+      color: #fff; border: none; border-radius: 999px;
+      text-decoration: none; font-weight: 700; font-size: .9rem;
+      transition: background .18s, transform .18s; cursor: pointer;
     }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 12px 18px;
-      background: var(--azul-claro);
-      color: #fff;
-      border: none;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: background .18s ease, transform .18s ease;
-    }
-    .btn:hover { background: #0b2d5f; transform: translateY(-1px); }
+    .btn-guia:hover { background: #0b2d5f; transform: translateY(-1px); }
     .footer {
-      margin-top: 24px;
-      text-align: center;
-      color: var(--gris);
-      font-size: .92rem;
-    }
-    .footer a {
-      color: var(--azul);
-      text-decoration: none;
-      font-weight: 700;
+      margin-top: 24px; text-align: center;
+      color: var(--gris); font-size: .9rem;
     }
   </style>
 </head>
 <body>
+
+<!-- ══════════════════════════════════════════
+     VISTA: LOGIN
+══════════════════════════════════════════ -->
+<div id="view-login" class="view">
+  <div class="login-card">
+    <div class="login-logo">
+      <img src="Imagenes/LOGO ITM.png" alt="ITM" onerror="this.style.display='none'">
+    </div>
+    <h2>Prácticas Profesionales</h2>
+    <p class="sub">Instituto Tecnológico Metropolitano · ITM</p>
+
+    <div class="form-group">
+      <label>Usuario</label>
+      <input type="text" id="login-user" placeholder="Nombre de usuario"
+        autocomplete="username" onkeydown="if(event.key==='Enter') login()">
+    </div>
+    <div class="form-group">
+      <label>Contraseña</label>
+      <div class="inp-pass-wrap">
+        <input type="password" id="login-pass" placeholder="Contraseña"
+          autocomplete="current-password" onkeydown="if(event.key==='Enter') login()">
+        <button class="toggle-pass" type="button" onclick="togglePass()">👁</button>
+      </div>
+    </div>
+    <button class="btn-login" onclick="login()">Ingresar</button>
+    <div id="login-msg" class="login-msg"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     VISTA: PORTAL DE GUÍAS
+══════════════════════════════════════════ -->
+<div id="view-portal" class="view">
   <header>
-    <h1>Índice de guías</h1>
-    <p>Selecciona la guía que quieras abrir desde la página principal del repositorio.</p>
+    <div class="header-left">
+      <h1>🏛️ Portal de Prácticas Profesionales</h1>
+      <p>Seleccione la guía que desea diligenciar</p>
+    </div>
+    <div class="header-right">
+      <span class="user-badge">👤 <span id="user-display"></span></span>
+      <button class="btn-logout" onclick="logout()">Cerrar sesión</button>
+    </div>
   </header>
+
   <main>
-    <div class="grid">
-      <article class="card">
-        <h2>Guía N°1 – Visita de Inicio</h2>
-        <div class="code"><span>FDE-074</span> Guía inicial</div>
-        <p>Registra las condiciones iniciales de la práctica profesional, el plan de trabajo y los compromisos entre el practicante, la empresa y el Monitor ITM.</p>
-        <a class="btn" href="guia1.html">Abrir guía 1</a>
-      </article>
-      <article class="card">
-        <h2>Guía N°2 – Seguimiento</h2>
-        <div class="code"><span>FDE-075</span> Control de avance</div>
-        <p>Evalúa el desempeño del practicante, registra observaciones de acompañamiento y documenta el seguimiento en el desarrollo de la práctica.</p>
-        <a class="btn" href="guia2.html">Abrir guía 2</a>
-      </article>
-      <article class="card">
-        <h2>Guía N°3 – Evaluación del Practicante</h2>
-        <div class="code"><span>FDE-076</span> Evaluación</div>
-        <p>Recoge la información sobre el desempeño y experiencia del practicante, así como la verificación de condiciones del escenario laboral.</p>
-        <a class="btn" href="guia3.html">Abrir guía 3</a>
-      </article>
-      <article class="card">
-        <h2>Guía N°4 – Acta de Cierre</h2>
-        <div class="code"><span>FDE-077</span> Cierre final</div>
-        <p>Formaliza el cierre de la práctica profesional, registra las calificaciones finales y las recomendaciones de la empresa y el monitor.</p>
-        <a class="btn" href="guia4.html">Abrir guía 4</a>
-      </article>
+    <div class="grid" id="grid-guias">
+      <!-- Las tarjetas se renderizan según guías permitidas -->
     </div>
     <div class="footer">
-      <p>También puedes usar <a href="hub.html">hub.html</a> si deseas ver las guías con el panel de selección integral.</p>
+      <p>Sistema de Seguimiento y Evaluación de Prácticas Profesionales · ITM</p>
     </div>
   </main>
+</div>
+
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+import { getFirestore, doc, getDoc }
+  from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+
+const firebaseConfig = {
+  apiKey:            "AIzaSyAsjH3q5_WhaKYcqTRwDRktY9cShfv3X_g",
+  authDomain:        "gifted-dreamer-402613.firebaseapp.com",
+  projectId:         "gifted-dreamer-402613",
+  storageBucket:     "gifted-dreamer-402613.firebasestorage.app",
+  messagingSenderId: "397197163762",
+  appId:             "1:397197163762:web:da2db1c38954db19da246b"
+};
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
+
+// ── SHA-256 ───────────────────────────────────────────────────────────────
+async function sha256(text) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+// ── Vistas ────────────────────────────────────────────────────────────────
+function mostrarVista(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function setMsg(texto, tipo) {
+  const el = document.getElementById('login-msg');
+  el.textContent = texto;
+  el.className = 'login-msg ' + tipo;
+  el.style.display = 'block';
+}
+
+// ── Guías disponibles ─────────────────────────────────────────────────────
+const GUIAS_INFO = {
+  guia1: {
+    titulo: 'Guía N°1 – Visita de Inicio',
+    codigo: 'FDE-074',
+    desc:   'Registra las condiciones iniciales de la práctica, el plan de trabajo y los compromisos entre el practicante, la empresa y el Monitor ITM.',
+    href:   'guia1.html'
+  },
+  guia2: {
+    titulo: 'Guía N°2 – Seguimiento',
+    codigo: 'FDE-075',
+    desc:   'Evalúa el desempeño del practicante, registra observaciones de acompañamiento y documenta el seguimiento en el desarrollo de la práctica.',
+    href:   'guia2.html'
+  },
+  guia3: {
+    titulo: 'Guía N°3 – Evaluación del Practicante',
+    codigo: 'FDE-076',
+    desc:   'Recoge la información sobre el desempeño y experiencia del practicante, así como la verificación de condiciones del escenario laboral.',
+    href:   'guia3.html'
+  },
+  guia4: {
+    titulo: 'Guía N°4 – Acta de Cierre',
+    codigo: 'FDE-077',
+    desc:   'Formaliza el cierre de la práctica profesional, registra las calificaciones finales y las recomendaciones de la empresa y el monitor.',
+    href:   'guia4.html'
+  }
+};
+
+function renderGuias(permitidas) {
+  const grid = document.getElementById('grid-guias');
+  grid.innerHTML = Object.entries(GUIAS_INFO).map(([key, g]) => {
+    const habilitada = permitidas.includes(key);
+    return `
+      <article class="card${habilitada ? '' : ' bloqueada'}">
+        <h2>${g.titulo}</h2>
+        <div class="code"><span>${g.codigo}</span></div>
+        <p>${g.desc}</p>
+        ${habilitada
+          ? `<a class="btn-guia" href="${g.href}">Abrir guía ›</a>`
+          : `<span style="font-size:.82rem;color:#aaa;">🔒 Sin acceso</span>`}
+      </article>`;
+  }).join('');
+}
+
+// ── LOGIN ─────────────────────────────────────────────────────────────────
+window.login = async function() {
+  const username = document.getElementById('login-user').value.trim().toLowerCase();
+  const pass     = document.getElementById('login-pass').value;
+
+  if (!username || !pass) return setMsg('⚠️ Ingrese usuario y contraseña.', 'error');
+  setMsg('⏳ Verificando…', 'info');
+
+  try {
+    // Buscar primero en usuarios_guias
+    let snap = await getDoc(doc(db, 'usuarios_guias', username));
+    let esAdmin = false;
+
+    // Si no existe, buscar en admin_usuarios
+    if (!snap.exists()) {
+      snap = await getDoc(doc(db, 'admin_usuarios', username));
+      esAdmin = true;
+    }
+
+    if (!snap.exists()) return setMsg('❌ Usuario no encontrado.', 'error');
+
+    const data = snap.data();
+    if (data.activo === false) return setMsg('❌ Cuenta desactivada. Contacte al administrador.', 'error');
+
+    const hash = await sha256(pass);
+    if (hash !== data.passwordHash) return setMsg('❌ Contraseña incorrecta.', 'error');
+
+    // Guardar sesión
+    const sesion = {
+      username,
+      nombre:   data.nombre,
+      rol:      data.rol || (esAdmin ? 'admin' : 'usuario'),
+      guiasPermitidas: esAdmin ? ['guia1','guia2','guia3','guia4'] : (data.guiasPermitidas || [])
+    };
+    sessionStorage.setItem('itm_sesion', JSON.stringify(sesion));
+
+    setMsg('✅ Bienvenido/a, ' + data.nombre, 'ok');
+    setTimeout(() => mostrarPortal(sesion), 700);
+  } catch (e) {
+    setMsg('❌ Error: ' + e.message, 'error');
+    console.error(e);
+  }
+};
+
+function mostrarPortal(sesion) {
+  document.getElementById('user-display').textContent =
+    sesion.nombre + (sesion.rol === 'admin' ? ' · Admin' : '');
+  renderGuias(sesion.guiasPermitidas);
+  mostrarVista('view-portal');
+}
+
+// ── LOGOUT ────────────────────────────────────────────────────────────────
+window.logout = function() {
+  sessionStorage.removeItem('itm_sesion');
+  document.getElementById('login-user').value = '';
+  document.getElementById('login-pass').value = '';
+  document.getElementById('login-msg').style.display = 'none';
+  mostrarVista('view-login');
+};
+
+// ── TOGGLE PASSWORD ───────────────────────────────────────────────────────
+window.togglePass = function() {
+  const inp = document.getElementById('login-pass');
+  const btn = document.querySelector('.toggle-pass');
+  if (inp.type === 'password') { inp.type = 'text'; btn.textContent = '🙈'; }
+  else                         { inp.type = 'password'; btn.textContent = '👁'; }
+};
+
+// ── INICIO: verificar sesión activa ──────────────────────────────────────
+(function init() {
+  const sesion = sessionStorage.getItem('itm_sesion');
+  if (sesion) {
+    mostrarPortal(JSON.parse(sesion));
+  } else {
+    mostrarVista('view-login');
+  }
+})();
+</script>
 </body>
 </html>
