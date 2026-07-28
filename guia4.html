@@ -13,9 +13,10 @@
     --gris-l: #F4F6F9;
     --gris-m: #C5CDD8;
     --exc:  #1B5E20; --exc-l: #E8F5E9;
-    --sat:  #1565C0; --sat-l: #E3F2FD;
-    --pro:  #E65100; --pro-l: #FFF3E0;
-    --mej:  #B71C1C; --mej-l: #FFEBEE;
+    --bue:  #1565C0; --bue-l: #E3F2FD;
+    --ace:  #E65100; --ace-l: #FFF3E0;
+    --reg:  #BF360C; --reg-l: #FBE9E7;
+    --def:  #B71C1C; --def-l: #FFEBEE;
     --si:   #1B5E20; --si-l:  #E8F5E9;
     --no:   #B71C1C; --no-l:  #FFEBEE;
   }
@@ -123,9 +124,10 @@
   .badge { display:inline-flex; align-items:center; gap:3px; padding:2px 8px;
     border-radius:12px; font-size:7.5pt; font-weight:bold; border:1.5px solid; }
   .badge.exc { background:var(--exc-l); color:var(--exc); border-color:var(--exc); }
-  .badge.sat { background:var(--sat-l); color:var(--sat); border-color:var(--sat); }
-  .badge.pro { background:var(--pro-l); color:var(--pro); border-color:var(--pro); }
-  .badge.mej { background:var(--mej-l); color:var(--mej); border-color:var(--mej); }
+  .badge.bue { background:var(--bue-l); color:var(--bue); border-color:var(--bue); }
+  .badge.ace { background:var(--ace-l); color:var(--ace); border-color:var(--ace); }
+  .badge.reg { background:var(--reg-l); color:var(--reg); border-color:var(--reg); }
+  .badge.def { background:var(--def-l); color:var(--def); border-color:var(--def); }
 
   /* ── Tabla de criterios ─────────────────────────────────────── */
   .crit-table { border-collapse:collapse; width:100%; table-layout:fixed; }
@@ -147,13 +149,15 @@
   .radio-group label { cursor:pointer; padding:3px 0; font-size:8pt; font-weight:bold;
     border:1px solid var(--gris-m); width:100%; text-align:center; transition:all .15s; user-select:none; }
   .radio-group label.r-exc { color:var(--exc); background:#fff; }
-  .radio-group label.r-sat { color:var(--sat); background:#fff; }
-  .radio-group label.r-pro { color:var(--pro); background:#fff; }
-  .radio-group label.r-mej { color:var(--mej); background:#fff; }
+  .radio-group label.r-bue { color:var(--bue); background:#fff; }
+  .radio-group label.r-ace { color:var(--ace); background:#fff; }
+  .radio-group label.r-reg { color:var(--reg); background:#fff; }
+  .radio-group label.r-def { color:var(--def); background:#fff; }
   .radio-group input.r-exc:checked + label.r-exc { background:var(--exc-l); border-color:var(--exc); }
-  .radio-group input.r-sat:checked + label.r-sat { background:var(--sat-l); border-color:var(--sat); }
-  .radio-group input.r-pro:checked + label.r-pro { background:var(--pro-l); border-color:var(--pro); }
-  .radio-group input.r-mej:checked + label.r-mej { background:var(--mej-l); border-color:var(--mej); }
+  .radio-group input.r-bue:checked + label.r-bue { background:var(--bue-l); border-color:var(--bue); }
+  .radio-group input.r-ace:checked + label.r-ace { background:var(--ace-l); border-color:var(--ace); }
+  .radio-group input.r-reg:checked + label.r-reg { background:var(--reg-l); border-color:var(--reg); }
+  .radio-group input.r-def:checked + label.r-def { background:var(--def-l); border-color:var(--def); }
 
   /* Puntaje */
   .score-box { display:flex; align-items:center; gap:10px; padding:5px 10px;
@@ -261,8 +265,8 @@
       </td>
       <td rowspan="1" id="enc-cod">
         <p><strong>Código:</strong> <span style="color:var(--negro);font-weight:normal;">FDE 077</span></p>
-        <p><strong>Versión:</strong> <span style="color:var(--negro);font-weight:normal;"></span></p>
-        <p><strong>Fecha:</strong> <span style="color:var(--negro);font-weight:normal;"></span></p>
+        <p><strong>Versión:</strong> <span style="color:var(--negro);font-weight:normal;">01</span></p>
+        <p><strong>Fecha:</strong> <span style="color:var(--negro);font-weight:normal;">00-00-2026</span></p>
       </td>
     </tr>
   </table>
@@ -275,14 +279,14 @@
     La Guía N°4 tiene como propósito formalizar la culminación del proceso de práctica profesional,
     dejando constancia del cumplimiento de actividades, la evaluación final de competencias por parte de la empresa,
     las apreciaciones del practicante y las conclusiones del Monitor ITM. Este documento constituye el cierre formal
-    del vínculo entre el estudiante, la empresa y el ITM, en cumplimiento del Decreto 0223/2026 y la Política de
+    del vínculo entre el estudiante, la empresa y el ITM, en cumplimiento del Decreto 0223/2026 y el Manual de
     Prácticas Profesionales ITM.
   </p>
 
   <div class="spacer"></div>
 
   <!-- ═══ 2. IDENTIFICACIÓN ══════════════════════════════════════ -->
-  <div class="sec-title"><span class="sec-num">2</span><span class="sec-text">IDENTIFICACIÓN</span></div>
+  <div class="sec-title"><span class="sec-num">2</span><span class="sec-text">IDENTIFICACIÓN DEL PRACTICANTE</span></div>
   <table>
     <colgroup><col style="width:38%"><col></colgroup>
     <tr>
@@ -342,14 +346,6 @@
         </select>
       </td>
     </tr>
-    <tr>
-      <td class="lbl">Modalidad de la visita de cierre:</td>
-      <td class="inp" style="padding:4px 7px;">
-        <label class="chk"><input type="checkbox"> Presencial</label>
-        <label class="chk"><input type="checkbox"> Virtual</label>
-        <label class="chk"><input type="checkbox"> Híbrida</label>
-      </td>
-    </tr>
   </table>
 
   <div class="spacer"></div>
@@ -360,81 +356,24 @@
 
   <div class="obj-hdr">3.1&nbsp; Apreciación de la empresa: ¿Cómo fue el desempeño del practicante y qué aportes realizó durante la práctica?</div>
   <div class="obj-body">
-    <textarea style="width:100%;min-height:52px;" placeholder="Describa el desempeño general, el cumplimiento de objetivos, las soluciones o mejoras implementadas y cualquier observación relevante sobre la evolución del estudiante…"></textarea>
+    <textarea style="width:100%;min-height:52px;" placeholder="Describa el desempeño general, el cumplimiento de objetivos y cualquier observación relevante sobre la evolución del estudiante…"></textarea>
   </div>
 
   <div style="height:4px;"></div>
 
-  <div class="obj-hdr">3.2&nbsp; Mejoras realizadas por el practicante: Indique el tipo de aporte o contribución realizada durante el período de práctica.</div>
-  <div class="obj-body" style="padding:6px 10px;">
-    <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
-      <colgroup><col style="width:70%"><col style="width:30%"></colgroup>
-      <thead>
-        <tr>
-          <th style="background:var(--azul);color:#fff;font-size:8.5pt;padding:5px 10px;border:1px solid var(--azul);text-align:left;">Tipo de aporte o contribución realizada</th>
-          <th style="background:var(--azul);color:#fff;font-size:8.5pt;padding:5px 8px;border:1px solid var(--azul);text-align:center;">Aplica</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="border:1px solid var(--gris-m);padding:4px 10px;font-size:8.5pt;background:#fff;">Mejora de procesos institucionales u operativos.</td>
-          <td style="border:1px solid var(--gris-m);padding:4px;text-align:center;background:#fff;"><input type="checkbox" style="width:auto;accent-color:var(--azul);cursor:pointer;"></td>
-        </tr>
-        <tr>
-          <td style="border:1px solid var(--gris-m);padding:4px 10px;font-size:8.5pt;background:#EFF3FB;">Solución técnica o apoyo especializado.</td>
-          <td style="border:1px solid var(--gris-m);padding:4px;text-align:center;background:#EFF3FB;"><input type="checkbox" style="width:auto;accent-color:var(--azul);cursor:pointer;"></td>
-        </tr>
-        <tr>
-          <td style="border:1px solid var(--gris-m);padding:4px 10px;font-size:8.5pt;background:#fff;">Organización, actualización o gestión documental.</td>
-          <td style="border:1px solid var(--gris-m);padding:4px;text-align:center;background:#fff;"><input type="checkbox" style="width:auto;accent-color:var(--azul);cursor:pointer;"></td>
-        </tr>
-        <tr>
-          <td style="border:1px solid var(--gris-m);padding:4px 10px;font-size:8.5pt;background:#EFF3FB;">Apoyo en procesos normativos, de calidad o cumplimiento.</td>
-          <td style="border:1px solid var(--gris-m);padding:4px;text-align:center;background:#EFF3FB;"><input type="checkbox" style="width:auto;accent-color:var(--azul);cursor:pointer;"></td>
-        </tr>
-        <tr>
-          <td style="border:1px solid var(--gris-m);padding:4px 10px;font-size:8.5pt;background:#fff;">Análisis y procesamiento de información.</td>
-          <td style="border:1px solid var(--gris-m);padding:4px;text-align:center;background:#fff;"><input type="checkbox" style="width:auto;accent-color:var(--azul);cursor:pointer;"></td>
-        </tr>
-        <tr>
-          <td style="border:1px solid var(--gris-m);padding:4px 10px;font-size:8.5pt;background:#EFF3FB;">Diseño o implementación de herramientas, formatos o sistemas de apoyo.</td>
-          <td style="border:1px solid var(--gris-m);padding:4px;text-align:center;background:#EFF3FB;"><input type="checkbox" style="width:auto;accent-color:var(--azul);cursor:pointer;"></td>
-        </tr>
-        <tr>
-          <td style="border:1px solid var(--gris-m);padding:4px 10px;font-size:8.5pt;background:#fff;">Desarrollo de propuestas innovadoras o de mejora continua.</td>
-          <td style="border:1px solid var(--gris-m);padding:4px;text-align:center;background:#fff;"><input type="checkbox" style="width:auto;accent-color:var(--azul);cursor:pointer;"></td>
-        </tr>
-        <tr>
-          <td style="border:1px solid var(--gris-m);border-bottom:none;padding:5px 10px;font-size:8.5pt;background:#EFF3FB;">Otro</td>
-          <td style="border:1px solid var(--gris-m);border-bottom:none;padding:4px;text-align:center;background:#EFF3FB;">
-            <input type="checkbox" id="otro-mejora-chk" style="width:auto;accent-color:var(--azul);cursor:pointer;"
-              onchange="var r=document.getElementById('otro-mejora-row');r.style.display=this.checked?'table-row':'none';">
-          </td>
-        </tr>
-        <tr id="otro-mejora-row" style="display:none;">
-          <td colspan="2" style="border:1px solid var(--gris-m);border-top:none;padding:5px 10px;background:#EFF3FB;">
-            <textarea id="otro-mejora-txt" placeholder="Especifique el tipo de aporte realizado…"
-              style="width:100%;border:none;border-bottom:1px solid var(--azul);background:transparent;
-              font-family:Arial,sans-serif;font-size:8.5pt;outline:none;resize:none;overflow:hidden;min-height:24px;"
-              oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px';"></textarea>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div style="height:4px;"></div>
-
-  <div class="obj-hdr">3.3&nbsp; Apreciación del practicante: ¿Qué aprendizajes obtuvo y cómo valora su experiencia de práctica?</div>
+  <div class="obj-hdr">3.2&nbsp; ¿Qué aportes o mejoras implementó el practicante durante el desarrollo de su práctica profesional?</div>
   <div class="obj-body">
-    <textarea style="width:100%;min-height:52px;" placeholder="Describa su balance personal: aprendizajes clave, retos superados, logros obtenidos y cómo la práctica aportó a su formación profesional…"></textarea>
+    <div style="padding:2px 0 8px;font-size:9pt;">
+      El practicante realizó una mejora, aporte o contribución adicional diferente a sus actividades:&nbsp;
+      <label class="chk"><input type="checkbox"> Sí</label>
+      <label class="chk"><input type="checkbox"> No</label>
+    </div>
+    <textarea style="width:100%;min-height:46px;" placeholder="Describa las soluciones o mejoras implementadas por el estudiante…"></textarea>
   </div>
 
   <div style="height:4px;"></div>
 
-  <div style="height:4px;"></div>
-
-  <div class="obj-hdr">3.4&nbsp; Naturaleza de las actividades desarrolladas: Indique el tipo de actividades que el practicante realizó durante su práctica profesional.</div>
+  <div class="obj-hdr">3.3&nbsp; Naturaleza de las actividades desarrolladas: Indique el tipo de actividades que el practicante realizó durante su práctica profesional.</div>
   <div class="obj-body" style="padding:6px 10px;">
     <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
       <colgroup><col style="width:70%"><col style="width:30%"></colgroup>
@@ -494,6 +433,13 @@
 
   <div style="height:4px;"></div>
 
+  <div class="obj-hdr">3.4&nbsp; Apreciación del practicante: ¿Qué aprendizajes obtuvo y cómo valora su experiencia de práctica?</div>
+  <div class="obj-body">
+    <textarea style="width:100%;min-height:52px;" placeholder="Describa su balance personal: aprendizajes clave, retos superados, logros obtenidos y cómo la práctica aportó a su formación profesional…"></textarea>
+  </div>
+
+  <div style="height:4px;"></div>
+
   <div class="obj-hdr">3.5&nbsp; Recomendaciones al ITM: ¿Qué puede mejorar el programa académico para preparar mejor a los futuros practicantes?</div>
   <div class="obj-body">
     <textarea style="width:100%;min-height:52px;" placeholder="Indique qué habilidades, conocimientos o experiencias previas facilitarían un mejor desempeño en el escenario de práctica (puede responder empresa, practicante o ambos)…"></textarea>
@@ -503,139 +449,130 @@
 
   <!-- ═══ 4. EVALUACIÓN DE COMPETENCIAS ══════════════════════════ -->
   <div class="sec-title"><span class="sec-num">4</span><span class="sec-text">EVALUACIÓN FINAL DE COMPETENCIAS</span></div>
-  <div class="escala-legend">
-    <span>Escala:</span>
-    <span class="badge exc">Excelente</span>
-    <span style="font-size:7pt;color:#555;">Supera lo esperado de manera consistente</span>
-    <span class="badge sat">Satisfactorio</span>
-    <span style="font-size:7pt;color:#555;">Cumple con lo esperado</span>
-    <span class="badge pro">En proceso</span>
-    <span style="font-size:7pt;color:#555;">Cumple parcialmente, requiere refuerzo</span>
-    <span class="badge mej">Por mejorar</span>
-    <span style="font-size:7pt;color:#555;">No alcanza lo esperado</span>
-  </div>
-  <p class="nota">Seleccione una opción por criterio. El puntaje se calcula automáticamente.</p>
+  <table>
+    <colgroup><col style="width:22%"><col></colgroup>
+    <tr>
+      <td class="inp" style="text-align:center;font-weight:bold;color:var(--exc);background:var(--exc-l);">Excelente (E) - 5 pts.</td>
+      <td class="inp">Supera lo esperado de manera consistente</td>
+    </tr>
+    <tr>
+      <td class="inp" style="text-align:center;font-weight:bold;color:var(--bue);background:var(--bue-l);">Bueno (B) - 4 pts.</td>
+      <td class="inp alt">Cumple con lo esperado</td>
+    </tr>
+    <tr>
+      <td class="inp" style="text-align:center;font-weight:bold;color:var(--ace);background:var(--ace-l);">Aceptable (A) - 3 pts.</td>
+      <td class="inp">Cumple parcialmente, requiere refuerzo</td>
+    </tr>
+    <tr>
+      <td class="inp" style="text-align:center;font-weight:bold;color:var(--reg);background:var(--reg-l);">Regular (R) - 2 pts.</td>
+      <td class="inp alt">Presenta un cumplimiento limitado de lo esperado y requiere mejoras significativas.</td>
+    </tr>
+    <tr>
+      <td class="inp" style="text-align:center;font-weight:bold;color:var(--def);background:var(--def-l);">Deficiente (D) - 1 pt.</td>
+      <td class="inp">No alcanza lo esperado</td>
+    </tr>
+  </table>
+  <p class="nota">Seleccione una opción por criterio. El puntaje total se calcula al finalizar.</p>
 
   <table class="crit-table">
     <colgroup>
-      <col style="width:28px"><col>
-      <col style="width:54px"><col style="width:62px">
-      <col style="width:52px"><col style="width:54px">
+      <col style="width:24px">
+      <col>
+      <col style="width:44px">
+      <col style="width:44px">
+      <col style="width:44px">
+      <col style="width:44px">
+      <col style="width:44px">
     </colgroup>
     <thead>
       <tr>
         <th>#</th>
         <th class="th-crit">Competencia evaluada</th>
-        <th style="font-size:7.5pt;padding:4px 2px;">Excelente</th>
-        <th style="font-size:7.5pt;padding:4px 2px;">Satisfactorio</th>
-        <th style="font-size:7.5pt;padding:4px 2px;">En<br>proceso</th>
-        <th style="font-size:7.5pt;padding:4px 2px;">Por<br>mejorar</th>
+        <th style="font-size:7pt;padding:4px 2px;">Excelente<br>(E)</th>
+        <th style="font-size:7pt;padding:4px 2px;">Bueno<br>(B)</th>
+        <th style="font-size:7pt;padding:4px 2px;">Aceptable<br>(A)</th>
+        <th style="font-size:7pt;padding:4px 2px;">Regular<br>(R)</th>
+        <th style="font-size:7pt;padding:4px 2px;">Deficiente<br>(D)</th>
       </tr>
     </thead>
     <tbody>
       <!-- Bloque A -->
-      <tr class="sub-hdr"><td colspan="6">A. Desempeño técnico y calidad del trabajo</td></tr>
+      <tr class="sub-hdr"><td colspan="7">A. Actitudes y valores profesionales</td></tr>
       <tr>
         <td class="num">1</td>
-        <td>Demostró dominio de los conocimientos, metodologías y herramientas propias de su área de formación.</td>
+        <td>Mostró una actitud ética, responsable y profesional en cada una de sus actuaciones.</td>
         <td><div class="radio-group"><input type="radio" name="c1" id="c1e" class="r-exc"><label for="c1e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c1" id="c1s" class="r-sat"><label for="c1s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c1" id="c1p" class="r-pro"><label for="c1p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c1" id="c1m" class="r-mej"><label for="c1m" class="r-mej">M</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c1" id="c1b" class="r-bue"><label for="c1b" class="r-bue">B</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c1" id="c1a" class="r-ace"><label for="c1a" class="r-ace">A</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c1" id="c1r" class="r-reg"><label for="c1r" class="r-reg">R</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c1" id="c1d" class="r-def"><label for="c1d" class="r-def">D</label></div></td>
       </tr>
       <tr>
         <td class="num">2</td>
-        <td>Ejecutó las actividades asignadas con calidad, precisión técnica y cumplimiento de los requerimientos establecidos.</td>
+        <td>Se adaptó adecuadamente a las normas, valores, políticas de confidencialidad y dinámicas de la organización.</td>
         <td><div class="radio-group"><input type="radio" name="c2" id="c2e" class="r-exc"><label for="c2e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c2" id="c2s" class="r-sat"><label for="c2s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c2" id="c2p" class="r-pro"><label for="c2p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c2" id="c2m" class="r-mej"><label for="c2m" class="r-mej">M</label></div></td>
-      </tr>
-      <tr>
-        <td class="num">3</td>
-        <td>Analizó y resolvió con criterio técnico las dificultades o problemas presentados en su área.</td>
-        <td><div class="radio-group"><input type="radio" name="c3" id="c3e" class="r-exc"><label for="c3e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c3" id="c3s" class="r-sat"><label for="c3s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c3" id="c3p" class="r-pro"><label for="c3p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c3" id="c3m" class="r-mej"><label for="c3m" class="r-mej">M</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c2" id="c2b" class="r-bue"><label for="c2b" class="r-bue">B</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c2" id="c2a" class="r-ace"><label for="c2a" class="r-ace">A</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c2" id="c2r" class="r-reg"><label for="c2r" class="r-reg">R</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c2" id="c2d" class="r-def"><label for="c2d" class="r-def">D</label></div></td>
       </tr>
       <!-- Bloque B -->
-      <tr class="sub-hdr"><td colspan="6">B. Responsabilidad y gestión del tiempo</td></tr>
+      <tr class="sub-hdr"><td colspan="7">B. Desempeño técnico y calidad del trabajo</td></tr>
+      <tr>
+        <td class="num">3</td>
+        <td>Organizó, planeó y gestionó adecuadamente su tiempo para el desarrollo de las actividades.</td>
+        <td><div class="radio-group"><input type="radio" name="c3" id="c3e" class="r-exc"><label for="c3e" class="r-exc">E</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c3" id="c3b" class="r-bue"><label for="c3b" class="r-bue">B</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c3" id="c3a" class="r-ace"><label for="c3a" class="r-ace">A</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c3" id="c3r" class="r-reg"><label for="c3r" class="r-reg">R</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c3" id="c3d" class="r-def"><label for="c3d" class="r-def">D</label></div></td>
+      </tr>
       <tr>
         <td class="num">4</td>
-        <td>Cumplió de manera oportuna con las actividades, tareas y compromisos asignados.</td>
+        <td>Demostró dominio de los conocimientos, metodologías y herramientas propias de su área de formación.</td>
         <td><div class="radio-group"><input type="radio" name="c4" id="c4e" class="r-exc"><label for="c4e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c4" id="c4s" class="r-sat"><label for="c4s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c4" id="c4p" class="r-pro"><label for="c4p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c4" id="c4m" class="r-mej"><label for="c4m" class="r-mej">M</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c4" id="c4b" class="r-bue"><label for="c4b" class="r-bue">B</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c4" id="c4a" class="r-ace"><label for="c4a" class="r-ace">A</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c4" id="c4r" class="r-reg"><label for="c4r" class="r-reg">R</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c4" id="c4d" class="r-def"><label for="c4d" class="r-def">D</label></div></td>
       </tr>
       <tr>
         <td class="num">5</td>
-        <td>Alcanzó los resultados y objetivos globales definidos para el desarrollo de su práctica profesional.</td>
+        <td>Demostró compromiso, responsabilidad y autonomía en el desarrollo de las funciones propias de su rol.</td>
         <td><div class="radio-group"><input type="radio" name="c5" id="c5e" class="r-exc"><label for="c5e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c5" id="c5s" class="r-sat"><label for="c5s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c5" id="c5p" class="r-pro"><label for="c5p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c5" id="c5m" class="r-mej"><label for="c5m" class="r-mej">M</label></div></td>
-      </tr>
-      <tr>
-        <td class="num">6</td>
-        <td>Organizó, planeó y gestionó adecuadamente su tiempo para el desarrollo de las actividades.</td>
-        <td><div class="radio-group"><input type="radio" name="c6" id="c6e" class="r-exc"><label for="c6e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c6" id="c6s" class="r-sat"><label for="c6s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c6" id="c6p" class="r-pro"><label for="c6p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c6" id="c6m" class="r-mej"><label for="c6m" class="r-mej">M</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c5" id="c5b" class="r-bue"><label for="c5b" class="r-bue">B</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c5" id="c5a" class="r-ace"><label for="c5a" class="r-ace">A</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c5" id="c5r" class="r-reg"><label for="c5r" class="r-reg">R</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c5" id="c5d" class="r-def"><label for="c5d" class="r-def">D</label></div></td>
       </tr>
       <!-- Bloque C -->
-      <tr class="sub-hdr"><td colspan="6">C. Comunicación, trabajo en equipo e iniciativa</td></tr>
+      <tr class="sub-hdr"><td colspan="7">C. Comunicación, trabajo en equipo e iniciativa</td></tr>
+      <tr>
+        <td class="num">6</td>
+        <td>Se comunicó de manera clara, respetuosa, asertiva y profesional en los diferentes entornos de trabajo.</td>
+        <td><div class="radio-group"><input type="radio" name="c6" id="c6e" class="r-exc"><label for="c6e" class="r-exc">E</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c6" id="c6b" class="r-bue"><label for="c6b" class="r-bue">B</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c6" id="c6a" class="r-ace"><label for="c6a" class="r-ace">A</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c6" id="c6r" class="r-reg"><label for="c6r" class="r-reg">R</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c6" id="c6d" class="r-def"><label for="c6d" class="r-def">D</label></div></td>
+      </tr>
       <tr>
         <td class="num">7</td>
-        <td>Se comunicó de manera clara, respetuosa, asertiva y profesional en los diferentes entornos de trabajo.</td>
+        <td>Recibió y aplicó constructivamente la retroalimentación brindada por su tutor o equipo.</td>
         <td><div class="radio-group"><input type="radio" name="c7" id="c7e" class="r-exc"><label for="c7e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c7" id="c7s" class="r-sat"><label for="c7s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c7" id="c7p" class="r-pro"><label for="c7p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c7" id="c7m" class="r-mej"><label for="c7m" class="r-mej">M</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c7" id="c7b" class="r-bue"><label for="c7b" class="r-bue">B</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c7" id="c7a" class="r-ace"><label for="c7a" class="r-ace">A</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c7" id="c7r" class="r-reg"><label for="c7r" class="r-reg">R</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c7" id="c7d" class="r-def"><label for="c7d" class="r-def">D</label></div></td>
       </tr>
       <tr>
         <td class="num">8</td>
-        <td>Participó activamente en espacios de trabajo colaborativo, demostrando empatía y buenas relaciones interpersonales.</td>
-        <td><div class="radio-group"><input type="radio" name="c8" id="c8e" class="r-exc"><label for="c8e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c8" id="c8s" class="r-sat"><label for="c8s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c8" id="c8p" class="r-pro"><label for="c8p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c8" id="c8m" class="r-mej"><label for="c8m" class="r-mej">M</label></div></td>
-      </tr>
-      <tr>
-        <td class="num">9</td>
-        <td>Recibió, procesó y aplicó constructivamente la retroalimentación brindada por su tutor o equipo.</td>
-        <td><div class="radio-group"><input type="radio" name="c9" id="c9e" class="r-exc"><label for="c9e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c9" id="c9s" class="r-sat"><label for="c9s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c9" id="c9p" class="r-pro"><label for="c9p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c9" id="c9m" class="r-mej"><label for="c9m" class="r-mej">M</label></div></td>
-      </tr>
-      <tr>
-        <td class="num">10</td>
         <td>Actuó con proactividad aportando ideas, iniciativas o mejoras que generaron valor al área o proceso asignado.</td>
-        <td><div class="radio-group"><input type="radio" name="c10" id="c10e" class="r-exc"><label for="c10e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c10" id="c10s" class="r-sat"><label for="c10s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c10" id="c10p" class="r-pro"><label for="c10p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c10" id="c10m" class="r-mej"><label for="c10m" class="r-mej">M</label></div></td>
-      </tr>
-      <!-- Bloque D -->
-      <tr class="sub-hdr"><td colspan="6">D. Actitudes y valores profesionales</td></tr>
-      <tr>
-        <td class="num">11</td>
-        <td>Mostró una actitud ética, responsable y profesional en cada una de sus actuaciones.</td>
-        <td><div class="radio-group"><input type="radio" name="c11" id="c11e" class="r-exc"><label for="c11e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c11" id="c11s" class="r-sat"><label for="c11s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c11" id="c11p" class="r-pro"><label for="c11p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c11" id="c11m" class="r-mej"><label for="c11m" class="r-mej">M</label></div></td>
-      </tr>
-      <tr>
-        <td class="num">12</td>
-        <td>Se adaptó adecuadamente a las normas, valores, políticas de confidencialidad y dinámicas de la organización.</td>
-        <td><div class="radio-group"><input type="radio" name="c12" id="c12e" class="r-exc"><label for="c12e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c12" id="c12s" class="r-sat"><label for="c12s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c12" id="c12p" class="r-pro"><label for="c12p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c12" id="c12m" class="r-mej"><label for="c12m" class="r-mej">M</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c8" id="c8e" class="r-exc"><label for="c8e" class="r-exc">E</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c8" id="c8b" class="r-bue"><label for="c8b" class="r-bue">B</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c8" id="c8a" class="r-ace"><label for="c8a" class="r-ace">A</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c8" id="c8r" class="r-reg"><label for="c8r" class="r-reg">R</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c8" id="c8d" class="r-def"><label for="c8d" class="r-def">D</label></div></td>
       </tr>
     </tbody>
   </table>
@@ -644,31 +581,60 @@
   <div class="score-box">
     <span>Puntaje total:</span>
     <div class="score-val" id="score-total">—</div>
-    <span>/ 48</span>
+    <span>/ 40</span>
     <span class="score-nivel" id="score-nivel" style="background:#f4f6f9;color:#555;border-color:#ccc;">Sin calificar</span>
-    <span style="margin-left:auto;font-size:7.5pt;color:#666;">E=4 · S=3 · P=2 · M=1 &nbsp;|&nbsp; 12 criterios × 4 pts</span>
+    <span style="margin-left:auto;font-size:7.5pt;color:#666;">E=5 · B=4 · A=3 · R=2 · D=1 &nbsp;|&nbsp; 8 criterios × 5 pts.</span>
   </div>
+
+  <div class="spacer"></div>
+
+  <table>
+    <colgroup><col><col style="width:70px"><col style="width:70px"><col style="width:80px"></colgroup>
+    <tr>
+      <td class="col-hdr" style="text-align:left;padding:5px 10px;">Criterio (Plan FDE-290)</td>
+      <td class="col-hdr">Cumplió</td>
+      <td class="col-hdr">Parcial</td>
+      <td class="col-hdr">No cumplió</td>
+    </tr>
+    <tr>
+      <td class="inp">Cumplimiento de objetivos y actividades del Plan de prácticas.</td>
+      <td class="inp" style="text-align:center;"><input type="radio" name="plan1" style="width:auto;accent-color:var(--azul);cursor:pointer;"></td>
+      <td class="inp" style="text-align:center;"><input type="radio" name="plan1" style="width:auto;accent-color:var(--azul);cursor:pointer;"></td>
+      <td class="inp" style="text-align:center;"><input type="radio" name="plan1" style="width:auto;accent-color:var(--azul);cursor:pointer;"></td>
+    </tr>
+    <tr>
+      <td class="inp alt">Aplicación de conocimientos del área de estudio</td>
+      <td class="inp alt" style="text-align:center;"><input type="radio" name="plan2" style="width:auto;accent-color:var(--azul);cursor:pointer;"></td>
+      <td class="inp alt" style="text-align:center;"><input type="radio" name="plan2" style="width:auto;accent-color:var(--azul);cursor:pointer;"></td>
+      <td class="inp alt" style="text-align:center;"><input type="radio" name="plan2" style="width:auto;accent-color:var(--azul);cursor:pointer;"></td>
+    </tr>
+    <tr>
+      <td class="inp">El estudiante entregó los resultados del Plan de Prácticas en el <strong>informe sistematización prácticas profesionales</strong> para su revisión, socialización y firma.</td>
+      <td class="inp" style="text-align:center;"><input type="radio" name="plan3" style="width:auto;accent-color:var(--azul);cursor:pointer;"></td>
+      <td class="inp" style="text-align:center;"><input type="radio" name="plan3" style="width:auto;accent-color:var(--azul);cursor:pointer;"></td>
+      <td class="inp" style="text-align:center;"><input type="radio" name="plan3" style="width:auto;accent-color:var(--azul);cursor:pointer;"></td>
+    </tr>
+    <tr>
+      <td class="lbl">Concepto final del cumplimiento del Plan de prácticas:</td>
+      <td class="inp alt" colspan="3" style="padding:5px 10px;">
+        <label class="chk"><input type="checkbox"> Satisfactorio</label>
+        <label class="chk"><input type="checkbox"> No satisfactorio</label>
+      </td>
+    </tr>
+  </table>
 
   <div class="spacer"></div>
 
   <!-- ═══ 5. CALIFICACIÓN FINAL DE LA EMPRESA ════════════════════ -->
   <div class="sec-title"><span class="sec-num">5</span><span class="sec-text">CALIFICACIÓN FINAL</span></div>
-  <p class="nota">Asigne la nota definitiva del practicante en escala de 1.0 a 5.0, conforme al desempeño observado durante toda la práctica.</p>
+  <p class="nota">La calificación final corresponde a la conversión del puntaje total obtenido en la evaluación de competencias (punto 4)
+    a la escala institucional de 1.0 a 5.0; no constituye una valoración independiente.<br>
+    Equivalencia: Nota final = (Puntaje total del punto 4 ÷ 40) × 5.0.</p>
   <div class="nota-final-box">
     <span>Nota final asignada por la empresa:</span>
-    <select class="nota-sel" id="nota-empresa" onchange="actualizarDescNota('nota-empresa','desc-nota-empresa')">
-      <option value="">—</option>
-      <option value="5.0">5.0</option>
-      <option value="4.5">4.5</option>
-      <option value="4.0">4.0</option>
-      <option value="3.5">3.5</option>
-      <option value="3.0">3.0</option>
-      <option value="2.5">2.5</option>
-      <option value="2.0">2.0</option>
-      <option value="1.5">1.5</option>
-      <option value="1.0">1.0</option>
-    </select>
-    <span class="nota-desc" id="desc-nota-empresa">Seleccione una nota</span>
+    <div class="nota-sel" id="nota-empresa" style="border-bottom-style:solid;">—</div>
+    <span>(escala 1.0 – 5.0)</span>
+    <span class="nota-desc" id="desc-nota-empresa">Complete el punto 4 para calcular</span>
   </div>
 
   <div class="spacer"></div>
@@ -737,17 +703,9 @@
 
   <div class="spacer"></div>
   <!-- ═══ 8. REGISTRO FOTOGRÁFICO ════════════════════════════════ -->
-  <div class="sec-title"><span class="sec-num">8</span><span class="sec-text">REGISTRO FOTOGRÁFICO DE LA VISITA DE CIERRE</span></div>
+  <div class="sec-title"><span class="sec-num">8</span><span class="sec-text">REGISTRO FOTOGRÁFICO DE LA VISITA</span></div>
   <div style="border:1px solid var(--gris-m);padding:8px 10px;background:#fff;">
-    <p style="font-size:8.5pt;margin-bottom:6px;color:var(--azul);font-weight:bold;">Adjuntar registro fotográfico de la reunión de cierre:</p>
-    <label style="display:flex;align-items:flex-start;gap:8px;font-size:8.5pt;cursor:pointer;margin-bottom:4px;">
-      <input type="checkbox" style="width:auto;margin-top:2px;accent-color:var(--azul);">
-      <span><strong>Autorizo el tratamiento de mis datos personales</strong> conforme a la Ley 1581/2012 y la Política de Privacidad del ITM para el seguimiento y gestión de mi práctica.</span>
-    </label>
-    <label style="display:flex;align-items:flex-start;gap:8px;font-size:8.5pt;cursor:pointer;margin-bottom:8px;">
-      <input type="checkbox" style="width:auto;margin-top:2px;accent-color:var(--azul);">
-      <span><strong>Autorizo la publicación de la fotografía</strong> en canales institucionales del ITM con fines de divulgación de las actividades de práctica profesional.</span>
-    </label>
+    <p style="font-size:8.5pt;margin-bottom:6px;color:var(--azul);font-weight:bold;">Adjuntar foto de la reunión:</p>
     <div style="margin-bottom:6px;">
       <input type="file" id="foto-input" accept="image/*" onchange="previsualizarFoto(event)"
         style="font-size:8pt;width:auto;border:none;background:transparent;padding:0;cursor:pointer;">
@@ -761,41 +719,48 @@
 
   <div class="spacer"></div>
 
-  <!-- ═══ 9. FECHA Y FIRMAS ══════════════════════════════════════ -->
-  <div class="sec-title"><span class="sec-num">9</span><span class="sec-text">FECHA DE DILIGENCIAMIENTO Y FIRMAS</span></div>
-
-  <div style="border:1px solid var(--gris-m);background:#fff;padding:4px 10px;display:flex;align-items:center;gap:10px;margin-bottom:3px;">
-    <span style="font-weight:bold;font-size:8.5pt;color:var(--azul);white-space:nowrap;">Fecha de diligenciamiento:</span>
-    <input type="date" id="fecha-dilig" style="border:none;border-bottom:1px solid var(--gris-m);font-size:9pt;outline:none;background:transparent;color:var(--negro);cursor:pointer;">
-  </div>
-
-  <div style="border:1px solid var(--gris-m);border-top:none;background:var(--azul-l);padding:7px 12px;margin-bottom:3px;">
-    <p style="font-size:8.5pt;line-height:1.6;color:var(--negro);text-align:justify;">
-      El presente formato tiene como propósito dejar constancia y avalar la culminación satisfactoria de las prácticas profesionales
-      desarrolladas por el practicante en la organización, evidenciando el cumplimiento adecuado de las actividades, funciones y
-      objetivos establecidos durante el período de práctica. Permite validar el desempeño integral del practicante en aspectos
-      relacionados con la responsabilidad, el compromiso, la ética profesional, el trabajo en equipo y la disposición para el
-      aprendizaje, como parte de su proceso de formación académica y fortalecimiento de competencias en el entorno laboral.
+  <!-- ═══ 9. AUTORIZACIÓN TRATAMIENTO DE DATOS ═══════════════════ -->
+  <div class="sec-title"><span class="sec-num">9</span><span class="sec-text">AUTORIZACIÓN — TRATAMIENTO DE DATOS PERSONALES Y USO DE IMAGEN</span></div>
+  <div style="border:1px solid var(--gris-m);background:var(--azul-l);border-radius:3px;padding:8px 12px;">
+    <p style="font-size:8pt;color:#444;margin-bottom:8px;line-height:1.4;text-align:justify;">
+      De conformidad con la Ley 1581 de 2012 y sus decretos reglamentarios, el practicante autoriza al ITM
+      el tratamiento de sus datos personales y el uso de su imagen fotográfica para los fines académicos e institucionales
+      que se describen a continuación:
     </p>
+    <label style="display:flex;align-items:flex-start;gap:8px;font-size:8.5pt;margin-bottom:6px;cursor:pointer;">
+      <input type="checkbox" style="width:auto;margin-top:2px;accent-color:var(--azul);">
+      <span><strong>Autorizo el tratamiento de mis datos personales</strong> (nombre, identificación, programa, correo y teléfono)
+      por parte de la Oficina de Prácticas Profesionales ITM para el seguimiento y gestión de mi práctica.</span>
+    </label>
+    <label style="display:flex;align-items:flex-start;gap:8px;font-size:8.5pt;cursor:pointer;">
+      <input type="checkbox" style="width:auto;margin-top:2px;accent-color:var(--azul);">
+      <span><strong>Autorizo la publicación de mi imagen fotográfica</strong> (registro de la visita de cierre) en canales institucionales del ITM
+      (página web, redes sociales, boletines académicos) con fines de divulgación de las actividades de práctica profesional.</span>
+    </label>
   </div>
+
+  <div class="spacer"></div>
+
+  <!-- ═══ 10. FIRMAS Y VALIDACIÓN TRIPARTITA ═════════════════════ -->
+  <div class="sec-title"><span class="sec-num">10</span><span class="sec-text">FIRMAS Y VALIDACIÓN TRIPARTITA</span></div>
 
   <table style="table-layout:fixed;">
     <colgroup><col style="width:33.3%"><col style="width:33.3%"><col></colgroup>
     <tr>
-      <td class="col-hdr">TUTOR DE LA EMPRESA</td>
-      <td class="col-hdr" style="border-left:2px solid #fff;">PRACTICANTE</td>
-      <td class="col-hdr" style="border-left:2px solid #fff;">MONITOR ITM</td>
+      <td class="col-hdr">PRACTICANTE</td>
+      <td class="col-hdr" style="border-left:2px solid #fff;">TUTOR &nbsp;(Escenario de Práctica)</td>
+      <td class="col-hdr" style="border-left:2px solid #fff;">MONITOR &nbsp;(Oficina de Prácticas ITM)</td>
     </tr>
     <tr>
       <td style="border:1px solid var(--gris-m);padding:4px 6px;vertical-align:top;">
         <p class="firma-lbl">Nombre:</p>
-        <input class="firma-inp" id="firma-tutor" type="text" readonly style="background:#f9f9f9;color:var(--azul);font-weight:bold;">
+        <input class="firma-inp" id="firma-pract" type="text" readonly style="background:#f9f9f9;color:var(--azul);font-weight:bold;">
         <div class="firma-line"></div>
         <p class="firma-lbl">Firma</p>
       </td>
       <td style="border:1px solid var(--gris-m);border-left:none;padding:4px 6px;vertical-align:top;">
         <p class="firma-lbl">Nombre:</p>
-        <input class="firma-inp" id="firma-pract" type="text" readonly style="background:#f9f9f9;color:var(--azul);font-weight:bold;">
+        <input class="firma-inp" id="firma-tutor" type="text" readonly style="background:#f9f9f9;color:var(--azul);font-weight:bold;">
         <div class="firma-line"></div>
         <p class="firma-lbl">Firma</p>
       </td>
@@ -814,12 +779,25 @@
         </p>
       </td>
     </tr>
+    <tr>
+      <td class="lbl" colspan="1">Fecha de diligenciamiento:</td>
+      <td colspan="2" style="border:1px solid var(--gris-m);padding:4px 8px;background:#fff;">
+        <input type="date" id="fecha-dilig" style="border:none;border-bottom:1px solid var(--gris-m);font-size:9pt;outline:none;background:transparent;color:var(--negro);cursor:pointer;width:200px;">
+      </td>
+    </tr>
+    <tr>
+      <td class="lbl">Modalidad de la visita:</td>
+      <td colspan="2" style="border:1px solid var(--gris-m);padding:5px 8px;font-size:8.5pt;background:#fff;">
+        <label class="chk"><input type="checkbox"> Presencial</label>
+        <label class="chk"><input type="checkbox"> Virtual</label>
+      </td>
+    </tr>
   </table>
 
   <div class="spacer"></div>
 
-  <!-- ═══ 10. ENCUESTAS ════════════════════════════════════════════ -->
-  <div class="sec-title"><span class="sec-num">10</span><span class="sec-text">ENCUESTAS DE SATISFACCIÓN</span></div>
+  <!-- ═══ 11. ENCUESTAS ════════════════════════════════════════════ -->
+  <div class="sec-title"><span class="sec-num">11</span><span class="sec-text">ENCUESTAS DE SATISFACCIÓN</span></div>
   <div style="border:1px solid var(--gris-m);background:#fff;border-radius:4px;padding:10px 14px;">
     <p style="font-size:8.5pt;color:var(--azul);font-weight:bold;margin-bottom:10px;">Por favor diligencie la encuesta correspondiente haciendo clic en el botón:</p>
     <div style="display:flex;flex-wrap:wrap;gap:10px;">
@@ -844,7 +822,7 @@
 
   <!-- Referencia normativa pie -->
   <div class="ref-norm">
-    <strong>Referencia normativa:</strong> Política de Prácticas Profesionales ITM · Decreto 0223 del 5 de marzo de 2026 (Min. Trabajo) ·
+    <strong>Referencia normativa:</strong> Manual de Prácticas Profesionales ITM · Decreto 0223 del 5 de marzo de 2026 (Min. Trabajo) ·
     Ley 1780/2016 · Ley 2466/2025 · Ley 2365/2024 · Ley 2039/2020 · Art. 81 CST ·
     Ley 1581/2012 (Protección de datos personales) · <em>Entregar al finalizar las prácticas profesionales.</em>
   </div>
@@ -924,6 +902,31 @@ function actualizarDescNota(selId, descId) {
   desc.style.borderColor = c.border || '#ccc';
 }
 
+// ── Nota final de empresa: conversión automática del puntaje (punto 4 ÷ 40 × 5.0) ──
+function actualizarNotaEmpresa(total, respondidos) {
+  const valEl  = document.getElementById('nota-empresa');
+  const descEl = document.getElementById('desc-nota-empresa');
+  if (!respondidos) {
+    valEl.textContent = '—';
+    descEl.textContent = 'Complete el punto 4 para calcular';
+    descEl.style.cssText = 'background:#f4f6f9;color:#555;border-color:#ccc;';
+    return;
+  }
+  const nota = Math.round((total / 40) * 5.0 * 10) / 10;
+  let label;
+  if (nota >= 4.5) label = 'Excelente';
+  else if (nota >= 4.0) label = 'Bueno';
+  else if (nota >= 3.0) label = 'Aceptable';
+  else if (nota >= 2.0) label = 'Insuficiente';
+  else label = 'Deficiente';
+  const c = NOTAS_COLOR[label] || {};
+  valEl.textContent = nota.toFixed(1);
+  descEl.textContent = label;
+  descEl.style.background = c.bg || '#f4f6f9';
+  descEl.style.color = c.color || '#555';
+  descEl.style.borderColor = c.border || '#ccc';
+}
+
 // ── Foto de la visita ───────────────────────────────────────────
 function previsualizarFoto(event) {
   const file = event.target.files[0]; if (!file) return;
@@ -950,27 +953,33 @@ function quitarFirmaMonitor() {
   document.getElementById('firma-monitor-preview-wrap').style.display = 'none';
 }
 
-// ── Puntaje automático (12 criterios × 4 pts = 48 total) ───────
-const PESOS  = { exc:4, sat:3, pro:2, mej:1 };
+// ── Puntaje automático (8 criterios × 5 pts = 40 total) ────────
+const PESOS  = { exc:5, bue:4, ace:3, reg:2, def:1 };
 const NIVELES = [
-  { min:44, label:'Excelente',      bg:'#E8F5E9', color:'#1B5E20', border:'#1B5E20' },
-  { min:32, label:'Satisfactorio',  bg:'#E3F2FD', color:'#1565C0', border:'#1565C0' },
-  { min:20, label:'En proceso',     bg:'#FFF3E0', color:'#E65100', border:'#E65100' },
-  { min:  0, label:'Por mejorar',   bg:'#FFEBEE', color:'#B71C1C', border:'#B71C1C' },
+  { min:36, label:'▲ Excelente',  bg:'#E8F5E9', color:'#1B5E20', border:'#1B5E20' },
+  { min:28, label:'● Bueno',      bg:'#E3F2FD', color:'#1565C0', border:'#1565C0' },
+  { min:20, label:'◆ Aceptable',  bg:'#FFF3E0', color:'#E65100', border:'#E65100' },
+  { min:12, label:'▶ Regular',    bg:'#FBE9E7', color:'#BF360C', border:'#BF360C' },
+  { min: 0, label:'▼ Deficiente', bg:'#FFEBEE', color:'#B71C1C', border:'#B71C1C' },
 ];
 function calcularPuntaje() {
   let total = 0, respondidos = 0;
-  for (let i = 1; i <= 12; i++) {
+  for (let i = 1; i <= 8; i++) {
     const sel = document.querySelector(`input[name="c${i}"]:checked`);
     if (sel) { total += PESOS[sel.className.replace('r-','')] || 0; respondidos++; }
   }
   const elTotal = document.getElementById('score-total');
   const elNivel = document.getElementById('score-nivel');
-  if (!respondidos) { elTotal.textContent = '—'; elNivel.textContent = 'Sin calificar'; elNivel.style.cssText = 'background:#f4f6f9;color:#555;border-color:#ccc;'; return; }
+  if (!respondidos) {
+    elTotal.textContent = '—'; elNivel.textContent = 'Sin calificar'; elNivel.style.cssText = 'background:#f4f6f9;color:#555;border-color:#ccc;';
+    actualizarNotaEmpresa(0, 0);
+    return;
+  }
   elTotal.textContent = total;
   const n = NIVELES.find(x => total >= x.min);
   elNivel.textContent = n.label;
   elNivel.style.background = n.bg; elNivel.style.color = n.color; elNivel.style.borderColor = n.border;
+  actualizarNotaEmpresa(total, respondidos);
 }
 document.querySelectorAll('input[type="radio"][name^="c"]').forEach(r => r.addEventListener('change', calcularPuntaje));
 
