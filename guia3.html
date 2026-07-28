@@ -13,9 +13,10 @@
     --gris-l: #F4F6F9;
     --gris-m: #C5CDD8;
     --exc:  #1B5E20; --exc-l: #E8F5E9;
-    --sat:  #1565C0; --sat-l: #E3F2FD;
-    --pro:  #E65100; --pro-l: #FFF3E0;
-    --mej:  #B71C1C; --mej-l: #FFEBEE;
+    --bue:  #1565C0; --bue-l: #E3F2FD;
+    --ace:  #E65100; --ace-l: #FFF3E0;
+    --reg:  #BF360C; --reg-l: #FBE9E7;
+    --def:  #B71C1C; --def-l: #FFEBEE;
     --si:   #1B5E20; --si-l:  #E8F5E9;
     --no:   #B71C1C; --no-l:  #FFEBEE;
   }
@@ -123,9 +124,10 @@
   .badge { display:inline-flex; align-items:center; gap:3px; padding:2px 8px;
     border-radius:12px; font-size:7.5pt; font-weight:bold; border:1.5px solid; }
   .badge.exc { background:var(--exc-l); color:var(--exc); border-color:var(--exc); }
-  .badge.sat { background:var(--sat-l); color:var(--sat); border-color:var(--sat); }
-  .badge.pro { background:var(--pro-l); color:var(--pro); border-color:var(--pro); }
-  .badge.mej { background:var(--mej-l); color:var(--mej); border-color:var(--mej); }
+  .badge.bue { background:var(--bue-l); color:var(--bue); border-color:var(--bue); }
+  .badge.ace { background:var(--ace-l); color:var(--ace); border-color:var(--ace); }
+  .badge.reg { background:var(--reg-l); color:var(--reg); border-color:var(--reg); }
+  .badge.def { background:var(--def-l); color:var(--def); border-color:var(--def); }
 
   /* ── Tabla de criterios ─────────────────────────────────────── */
   .crit-table { border-collapse:collapse; width:100%; table-layout:fixed; }
@@ -147,13 +149,15 @@
   .radio-group label { cursor:pointer; padding:3px 0; font-size:8pt; font-weight:bold;
     border:1px solid var(--gris-m); width:100%; text-align:center; transition:all .15s; user-select:none; }
   .radio-group label.r-exc { color:var(--exc); background:#fff; }
-  .radio-group label.r-sat { color:var(--sat); background:#fff; }
-  .radio-group label.r-pro { color:var(--pro); background:#fff; }
-  .radio-group label.r-mej { color:var(--mej); background:#fff; }
+  .radio-group label.r-bue { color:var(--bue); background:#fff; }
+  .radio-group label.r-ace { color:var(--ace); background:#fff; }
+  .radio-group label.r-reg { color:var(--reg); background:#fff; }
+  .radio-group label.r-def { color:var(--def); background:#fff; }
   .radio-group input.r-exc:checked + label.r-exc { background:var(--exc-l); border-color:var(--exc); }
-  .radio-group input.r-sat:checked + label.r-sat { background:var(--sat-l); border-color:var(--sat); }
-  .radio-group input.r-pro:checked + label.r-pro { background:var(--pro-l); border-color:var(--pro); }
-  .radio-group input.r-mej:checked + label.r-mej { background:var(--mej-l); border-color:var(--mej); }
+  .radio-group input.r-bue:checked + label.r-bue { background:var(--bue-l); border-color:var(--bue); }
+  .radio-group input.r-ace:checked + label.r-ace { background:var(--ace-l); border-color:var(--ace); }
+  .radio-group input.r-reg:checked + label.r-reg { background:var(--reg-l); border-color:var(--reg); }
+  .radio-group input.r-def:checked + label.r-def { background:var(--def-l); border-color:var(--def); }
 
   /* Puntaje */
   .score-box { display:flex; align-items:center; gap:10px; padding:5px 10px;
@@ -261,8 +265,8 @@
       </td>
       <td rowspan="1" id="enc-cod">
         <p><strong>Código:</strong> <span style="color:var(--negro);font-weight:normal;">FDE 076</span></p>
-        <p><strong>Versión:</strong> <span style="color:var(--negro);font-weight:normal;"></span></p>
-        <p><strong>Fecha:</strong> <span style="color:var(--negro);font-weight:normal;"></span></p>
+        <p><strong>Versión:</strong> <span style="color:var(--negro);font-weight:normal;">01</span></p>
+        <p><strong>Fecha:</strong> <span style="color:var(--negro);font-weight:normal;">00-00-2026</span></p>
       </td>
     </tr>
   </table>
@@ -275,14 +279,14 @@
     La Guía N°3 tiene como propósito recoger la perspectiva del <strong>practicante</strong> sobre su
     experiencia de las prácticas profesionales, fortaleciendo el proceso de aprendizaje interinstitucional entre la empresa
     y el ITM. El estudiante valora factores de desarrollo personal, condiciones del escenario y el apoyo recibido,
-    a los <strong>60 días de iniciada la práctica</strong>, en cumplimiento del Decreto 0223/2026 y la Política de
+    a los <strong>60 días de iniciada la práctica</strong>, en cumplimiento del Decreto 0223/2026 y el Manual de
     Prácticas Profesionales ITM.
   </p>
 
   <div class="spacer"></div>
 
   <!-- ═══ 2. IDENTIFICACIÓN ══════════════════════════════════════ -->
-  <div class="sec-title"><span class="sec-num">2</span><span class="sec-text">IDENTIFICACIÓN</span></div>
+  <div class="sec-title"><span class="sec-num">2</span><span class="sec-text">IDENTIFICACIÓN DEL PRACTICANTE</span></div>
   <table>
     <colgroup><col style="width:38%"><col></colgroup>
     <tr>
@@ -342,36 +346,36 @@
         </select>
       </td>
     </tr>
-    <tr>
-      <td class="lbl">Fecha de diligenciamiento:</td>
-      <td class="inp alt"><input type="date" id="fecha-dilig-top"></td>
-    </tr>
-    <tr>
-      <td class="lbl">Modalidad de la visita:</td>
-      <td class="inp" style="padding:4px 7px;">
-        <label class="chk"><input type="checkbox"> Presencial</label>
-        <label class="chk"><input type="checkbox"> Virtual</label>
-        <label class="chk"><input type="checkbox"> Híbrida</label>
-      </td>
-    </tr>
   </table>
 
   <div class="spacer"></div>
 
   <!-- ═══ 3. ESCALA DE CALIFICACIÓN ══════════════════════════════ -->
   <div class="sec-title"><span class="sec-num">3</span><span class="sec-text">ESCALA DE CALIFICACIÓN</span></div>
-  <div class="escala-legend">
-    <span>Referencia:</span>
-    <span class="badge exc">Excelente</span>
-    <span style="font-size:7pt;color:#555;">Totalmente de acuerdo / Muy satisfecho</span>
-    <span class="badge sat">Satisfactorio</span>
-    <span style="font-size:7pt;color:#555;">De acuerdo / Satisfecho</span>
-    <span class="badge pro">En proceso</span>
-    <span style="font-size:7pt;color:#555;">Neutral / Cumple parcialmente</span>
-    <span class="badge mej">Por mejorar</span>
-    <span style="font-size:7pt;color:#555;">En desacuerdo / Insatisfecho</span>
-  </div>
-  <p class="nota">Seleccione una opción por criterio. El puntaje total se calcula automáticamente.</p>
+  <table>
+    <colgroup><col style="width:22%"><col></colgroup>
+    <tr>
+      <td class="inp" style="text-align:center;font-weight:bold;color:var(--exc);background:var(--exc-l);">Excelente (E) - 5 pts.</td>
+      <td class="inp">Supera lo esperado de manera consistente</td>
+    </tr>
+    <tr>
+      <td class="inp" style="text-align:center;font-weight:bold;color:var(--bue);background:var(--bue-l);">Bueno (B) - 4 pts.</td>
+      <td class="inp alt">Cumple con lo esperado</td>
+    </tr>
+    <tr>
+      <td class="inp" style="text-align:center;font-weight:bold;color:var(--ace);background:var(--ace-l);">Aceptable (A) - 3 pts.</td>
+      <td class="inp">Cumple parcialmente, requiere refuerzo</td>
+    </tr>
+    <tr>
+      <td class="inp" style="text-align:center;font-weight:bold;color:var(--reg);background:var(--reg-l);">Regular (R) - 2 pts.</td>
+      <td class="inp alt">Presenta un cumplimiento limitado de lo esperado y requiere mejoras significativas.</td>
+    </tr>
+    <tr>
+      <td class="inp" style="text-align:center;font-weight:bold;color:var(--def);background:var(--def-l);">Deficiente (D) - 1 pt.</td>
+      <td class="inp">No alcanza lo esperado</td>
+    </tr>
+  </table>
+  <p class="nota">Seleccione una opción por criterio. El puntaje total se calcula al finalizar.</p>
 
   <div class="spacer"></div>
 
@@ -381,18 +385,23 @@
 
   <table class="crit-table">
     <colgroup>
-      <col style="width:28px"><col>
-      <col style="width:54px"><col style="width:62px">
-      <col style="width:52px"><col style="width:54px">
+      <col style="width:24px">
+      <col>
+      <col style="width:44px">
+      <col style="width:44px">
+      <col style="width:44px">
+      <col style="width:44px">
+      <col style="width:44px">
     </colgroup>
     <thead>
       <tr>
         <th>#</th>
-        <th class="th-crit">Factor de evaluación</th>
-        <th style="font-size:7.5pt;padding:4px 2px;">Excelente</th>
-        <th style="font-size:7.5pt;padding:4px 2px;">Satisfactorio</th>
-        <th style="font-size:7.5pt;padding:4px 2px;">En<br>proceso</th>
-        <th style="font-size:7.5pt;padding:4px 2px;">Por<br>mejorar</th>
+        <th class="th-crit">Competencia evaluada</th>
+        <th style="font-size:7pt;padding:4px 2px;">Excelente<br>(E)</th>
+        <th style="font-size:7pt;padding:4px 2px;">Bueno<br>(B)</th>
+        <th style="font-size:7pt;padding:4px 2px;">Aceptable<br>(A)</th>
+        <th style="font-size:7pt;padding:4px 2px;">Regular<br>(R)</th>
+        <th style="font-size:7pt;padding:4px 2px;">Deficiente<br>(D)</th>
       </tr>
     </thead>
     <tbody>
@@ -400,81 +409,82 @@
         <td class="num">1</td>
         <td>La práctica está contribuyendo al fortalecimiento de su confianza y desarrollo personal.</td>
         <td><div class="radio-group"><input type="radio" name="c1" id="c1e" class="r-exc"><label for="c1e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c1" id="c1s" class="r-sat"><label for="c1s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c1" id="c1p" class="r-pro"><label for="c1p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c1" id="c1m" class="r-mej"><label for="c1m" class="r-mej">M</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c1" id="c1b" class="r-bue"><label for="c1b" class="r-bue">B</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c1" id="c1a" class="r-ace"><label for="c1a" class="r-ace">A</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c1" id="c1r" class="r-reg"><label for="c1r" class="r-reg">R</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c1" id="c1d" class="r-def"><label for="c1d" class="r-def">D</label></div></td>
       </tr>
       <tr>
         <td class="num">2</td>
         <td>La práctica le ha permitido identificar fortalezas y aspectos por mejorar en su proceso formativo.</td>
         <td><div class="radio-group"><input type="radio" name="c2" id="c2e" class="r-exc"><label for="c2e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c2" id="c2s" class="r-sat"><label for="c2s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c2" id="c2p" class="r-pro"><label for="c2p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c2" id="c2m" class="r-mej"><label for="c2m" class="r-mej">M</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c2" id="c2b" class="r-bue"><label for="c2b" class="r-bue">B</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c2" id="c2a" class="r-ace"><label for="c2a" class="r-ace">A</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c2" id="c2r" class="r-reg"><label for="c2r" class="r-reg">R</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c2" id="c2d" class="r-def"><label for="c2d" class="r-def">D</label></div></td>
       </tr>
       <tr>
         <td class="num">3</td>
         <td>La práctica le ha permitido fortalecer sus relaciones profesionales y su integración al entorno laboral.</td>
         <td><div class="radio-group"><input type="radio" name="c3" id="c3e" class="r-exc"><label for="c3e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c3" id="c3s" class="r-sat"><label for="c3s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c3" id="c3p" class="r-pro"><label for="c3p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c3" id="c3m" class="r-mej"><label for="c3m" class="r-mej">M</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c3" id="c3b" class="r-bue"><label for="c3b" class="r-bue">B</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c3" id="c3a" class="r-ace"><label for="c3a" class="r-ace">A</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c3" id="c3r" class="r-reg"><label for="c3r" class="r-reg">R</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c3" id="c3d" class="r-def"><label for="c3d" class="r-def">D</label></div></td>
       </tr>
       <tr>
         <td class="num">4</td>
         <td>La práctica le ha permitido comprender mejor las funciones y actividades relacionadas con su perfil académico y profesional.</td>
         <td><div class="radio-group"><input type="radio" name="c4" id="c4e" class="r-exc"><label for="c4e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c4" id="c4s" class="r-sat"><label for="c4s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c4" id="c4p" class="r-pro"><label for="c4p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c4" id="c4m" class="r-mej"><label for="c4m" class="r-mej">M</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c4" id="c4b" class="r-bue"><label for="c4b" class="r-bue">B</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c4" id="c4a" class="r-ace"><label for="c4a" class="r-ace">A</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c4" id="c4r" class="r-reg"><label for="c4r" class="r-reg">R</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c4" id="c4d" class="r-def"><label for="c4d" class="r-def">D</label></div></td>
       </tr>
       <tr>
         <td class="num">5</td>
         <td>La práctica le ha generado nuevos aprendizajes relacionados con su formación.</td>
         <td><div class="radio-group"><input type="radio" name="c5" id="c5e" class="r-exc"><label for="c5e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c5" id="c5s" class="r-sat"><label for="c5s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c5" id="c5p" class="r-pro"><label for="c5p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c5" id="c5m" class="r-mej"><label for="c5m" class="r-mej">M</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c5" id="c5b" class="r-bue"><label for="c5b" class="r-bue">B</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c5" id="c5a" class="r-ace"><label for="c5a" class="r-ace">A</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c5" id="c5r" class="r-reg"><label for="c5r" class="r-reg">R</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c5" id="c5d" class="r-def"><label for="c5d" class="r-def">D</label></div></td>
       </tr>
       <tr>
         <td class="num">6</td>
         <td>La práctica le ha permitido asumir nuevos retos en su proceso de formación profesional.</td>
         <td><div class="radio-group"><input type="radio" name="c6" id="c6e" class="r-exc"><label for="c6e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c6" id="c6s" class="r-sat"><label for="c6s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c6" id="c6p" class="r-pro"><label for="c6p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c6" id="c6m" class="r-mej"><label for="c6m" class="r-mej">M</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c6" id="c6b" class="r-bue"><label for="c6b" class="r-bue">B</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c6" id="c6a" class="r-ace"><label for="c6a" class="r-ace">A</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c6" id="c6r" class="r-reg"><label for="c6r" class="r-reg">R</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c6" id="c6d" class="r-def"><label for="c6d" class="r-def">D</label></div></td>
       </tr>
       <tr>
         <td class="num">7</td>
         <td>La práctica le ha permitido participar activamente en las actividades y dinámicas de la organización.</td>
         <td><div class="radio-group"><input type="radio" name="c7" id="c7e" class="r-exc"><label for="c7e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c7" id="c7s" class="r-sat"><label for="c7s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c7" id="c7p" class="r-pro"><label for="c7p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c7" id="c7m" class="r-mej"><label for="c7m" class="r-mej">M</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c7" id="c7b" class="r-bue"><label for="c7b" class="r-bue">B</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c7" id="c7a" class="r-ace"><label for="c7a" class="r-ace">A</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c7" id="c7r" class="r-reg"><label for="c7r" class="r-reg">R</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c7" id="c7d" class="r-def"><label for="c7d" class="r-def">D</label></div></td>
       </tr>
       <tr>
         <td class="num">8</td>
         <td>La empresa le brinda espacios para aportar ideas o sugerencias relacionadas con sus actividades.</td>
         <td><div class="radio-group"><input type="radio" name="c8" id="c8e" class="r-exc"><label for="c8e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c8" id="c8s" class="r-sat"><label for="c8s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c8" id="c8p" class="r-pro"><label for="c8p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c8" id="c8m" class="r-mej"><label for="c8m" class="r-mej">M</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c8" id="c8b" class="r-bue"><label for="c8b" class="r-bue">B</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c8" id="c8a" class="r-ace"><label for="c8a" class="r-ace">A</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c8" id="c8r" class="r-reg"><label for="c8r" class="r-reg">R</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c8" id="c8d" class="r-def"><label for="c8d" class="r-def">D</label></div></td>
       </tr>
       <tr>
         <td class="num">9</td>
         <td>Cuenta con acompañamiento por parte de su jefe inmediato y del equipo de trabajo para su proceso durante el desarrollo de la práctica.</td>
         <td><div class="radio-group"><input type="radio" name="c9" id="c9e" class="r-exc"><label for="c9e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c9" id="c9s" class="r-sat"><label for="c9s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c9" id="c9p" class="r-pro"><label for="c9p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c9" id="c9m" class="r-mej"><label for="c9m" class="r-mej">M</label></div></td>
-      </tr>
-      <tr>
-        <td class="num">10</td>
-        <td>Cuenta con apoyo del equipo de trabajo para su proceso de adaptación e integración en la empresa.</td>
-        <td><div class="radio-group"><input type="radio" name="c10" id="c10e" class="r-exc"><label for="c10e" class="r-exc">E</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c10" id="c10s" class="r-sat"><label for="c10s" class="r-sat">S</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c10" id="c10p" class="r-pro"><label for="c10p" class="r-pro">P</label></div></td>
-        <td><div class="radio-group"><input type="radio" name="c10" id="c10m" class="r-mej"><label for="c10m" class="r-mej">M</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c9" id="c9b" class="r-bue"><label for="c9b" class="r-bue">B</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c9" id="c9a" class="r-ace"><label for="c9a" class="r-ace">A</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c9" id="c9r" class="r-reg"><label for="c9r" class="r-reg">R</label></div></td>
+        <td><div class="radio-group"><input type="radio" name="c9" id="c9d" class="r-def"><label for="c9d" class="r-def">D</label></div></td>
       </tr>
     </tbody>
   </table>
@@ -483,9 +493,9 @@
   <div class="score-box">
     <span>Puntaje total:</span>
     <div class="score-val" id="score-total">—</div>
-    <span>/ 40</span>
+    <span>/ 45</span>
     <span class="score-nivel" id="score-nivel" style="background:#f4f6f9;color:#555;border-color:#ccc;">Sin calificar</span>
-    <span style="margin-left:auto;font-size:7.5pt;color:#666;">E=4 · S=3 · P=2 · M=1 &nbsp;|&nbsp; 10 criterios × 4 pts</span>
+    <span style="margin-left:auto;font-size:7.5pt;color:#666;">E=5 · B=4 · A=3 · R=2 · D=1 &nbsp;|&nbsp; 9 criterios × 5 pts.</span>
   </div>
 
   <div class="spacer"></div>
@@ -606,20 +616,10 @@
 
   <div class="spacer"></div>
 
-  <div class="spacer"></div>
-
-  <!-- ═══ 7. REGISTRO FOTOGRÁFICO ════════════════════════════════ -->
-  <div class="sec-title"><span class="sec-num">7</span><span class="sec-text">REGISTRO FOTOGRÁFICO DE LA VISITA</span></div>
+  <!-- ═══ 8. REGISTRO FOTOGRÁFICO ════════════════════════════════ -->
+  <div class="sec-title"><span class="sec-num">8</span><span class="sec-text">REGISTRO FOTOGRÁFICO DE LA VISITA</span></div>
   <div style="border:1px solid var(--gris-m);padding:8px 10px;background:#fff;">
-    <p style="font-size:8.5pt;margin-bottom:6px;color:var(--azul);font-weight:bold;">Adjuntar registro fotográfico de la reunión de evaluación:</p>
-    <label style="display:flex;align-items:flex-start;gap:8px;font-size:8.5pt;cursor:pointer;margin-bottom:4px;">
-      <input type="checkbox" style="width:auto;margin-top:2px;accent-color:var(--azul);">
-      <span><strong>Autorizo el tratamiento de mis datos personales</strong> conforme a la Ley 1581/2012 y la Política de Privacidad del ITM para el seguimiento y gestión de mi práctica.</span>
-    </label>
-    <label style="display:flex;align-items:flex-start;gap:8px;font-size:8.5pt;cursor:pointer;margin-bottom:8px;">
-      <input type="checkbox" style="width:auto;margin-top:2px;accent-color:var(--azul);">
-      <span><strong>Autorizo la publicación de la fotografía</strong> en canales institucionales del ITM con fines de divulgación de las actividades de práctica profesional.</span>
-    </label>
+    <p style="font-size:8.5pt;margin-bottom:6px;color:var(--azul);font-weight:bold;">Adjuntar foto de la reunión:</p>
     <div style="margin-bottom:6px;">
       <input type="file" id="foto-input" accept="image/*" onchange="previsualizarFoto(event)"
         style="font-size:8pt;width:auto;border:none;background:transparent;padding:0;cursor:pointer;">
@@ -633,13 +633,30 @@
 
   <div class="spacer"></div>
 
-  <!-- ═══ 8. FECHA Y FIRMA ══════════════════════════════════════ -->
-  <div class="sec-title"><span class="sec-num">8</span><span class="sec-text">FECHA DE DILIGENCIAMIENTO Y FIRMA</span></div>
-
-  <div style="border:1px solid var(--gris-m);background:#fff;padding:4px 10px;display:flex;align-items:center;gap:10px;margin-bottom:3px;">
-    <span style="font-weight:bold;font-size:8.5pt;color:var(--azul);white-space:nowrap;">Fecha de diligenciamiento:</span>
-    <input type="date" id="fecha-dilig" style="border:none;border-bottom:1px solid var(--gris-m);font-size:9pt;outline:none;background:transparent;color:var(--negro);cursor:pointer;">
+  <!-- ═══ 9. AUTORIZACIÓN TRATAMIENTO DE DATOS ═══════════════════ -->
+  <div class="sec-title"><span class="sec-num">9</span><span class="sec-text">AUTORIZACIÓN — TRATAMIENTO DE DATOS PERSONALES Y USO DE IMAGEN</span></div>
+  <div style="border:1px solid var(--gris-m);background:var(--azul-l);border-radius:3px;padding:8px 12px;">
+    <p style="font-size:8pt;color:#444;margin-bottom:8px;line-height:1.4;text-align:justify;">
+      De conformidad con la Ley 1581 de 2012 y sus decretos reglamentarios, el practicante autoriza al ITM
+      el tratamiento de sus datos personales y el uso de su imagen fotográfica para los fines académicos e institucionales
+      que se describen a continuación:
+    </p>
+    <label style="display:flex;align-items:flex-start;gap:8px;font-size:8.5pt;margin-bottom:6px;cursor:pointer;">
+      <input type="checkbox" style="width:auto;margin-top:2px;accent-color:var(--azul);">
+      <span><strong>Autorizo el tratamiento de mis datos personales</strong> (nombre, identificación, programa, correo y teléfono)
+      por parte de la Oficina de Prácticas Profesionales ITM para el seguimiento y gestión de mi práctica.</span>
+    </label>
+    <label style="display:flex;align-items:flex-start;gap:8px;font-size:8.5pt;cursor:pointer;">
+      <input type="checkbox" style="width:auto;margin-top:2px;accent-color:var(--azul);">
+      <span><strong>Autorizo la publicación de mi imagen fotográfica</strong> (registro de seguimiento) en canales institucionales del ITM
+      (página web, redes sociales, boletines académicos) con fines de divulgación de las actividades de práctica profesional.</span>
+    </label>
   </div>
+
+  <div class="spacer"></div>
+
+  <!-- ═══ 10. FECHA Y FIRMA ══════════════════════════════════════ -->
+  <div class="sec-title"><span class="sec-num">10</span><span class="sec-text">FECHA DE DILIGENCIAMIENTO Y FIRMA</span></div>
 
   <table style="table-layout:fixed;">
     <colgroup><col style="width:50%"><col></colgroup>
@@ -664,11 +681,24 @@
         </p>
       </td>
     </tr>
+    <tr>
+      <td class="lbl">Fecha de diligenciamiento:</td>
+      <td style="border:1px solid var(--gris-m);padding:4px 8px;background:#fff;">
+        <input type="date" id="fecha-dilig" style="border:none;border-bottom:1px solid var(--gris-m);font-size:9pt;outline:none;background:transparent;color:var(--negro);cursor:pointer;width:200px;">
+      </td>
+    </tr>
+    <tr>
+      <td class="lbl">Modalidad de la visita:</td>
+      <td style="border:1px solid var(--gris-m);padding:5px 8px;font-size:8.5pt;background:#fff;">
+        <label class="chk"><input type="checkbox"> Presencial</label>
+        <label class="chk"><input type="checkbox"> Virtual</label>
+      </td>
+    </tr>
   </table>
 
   <!-- Referencia normativa pie -->
   <div class="ref-norm">
-    <strong>Referencia normativa:</strong> Política de Prácticas Profesionales ITM · Decreto 0223 del 5 de marzo de 2026 (Min. Trabajo) ·
+    <strong>Referencia normativa:</strong> Manual de Prácticas Profesionales ITM · Decreto 0223 del 5 de marzo de 2026 (Min. Trabajo) ·
     Ley 1780/2016 · Ley 2466/2025 · Ley 2365/2024 · Ley 2039/2020 · Art. 81 CST ·
     Ley 1581/2012 (Protección de datos personales) · <em>Entregar a los 60 días de inicio de la práctica.</em>
   </div>
@@ -743,17 +773,18 @@ function quitarFirmaMonitor() {
   document.getElementById('firma-monitor-preview-wrap').style.display = 'none';
 }
 
-// ── Puntaje automático (6 criterios × 4 pts = 24 total) ────────
-const PESOS  = { exc:4, sat:3, pro:2, mej:1 };
+// ── Puntaje automático (9 criterios × 5 pts = 45 total) ────────
+const PESOS  = { exc:5, bue:4, ace:3, reg:2, def:1 };
 const NIVELES = [
-  { min:22, label:'Excelente',      bg:'#E8F5E9', color:'#1B5E20', border:'#1B5E20' },
-  { min:16, label:'Satisfactorio',  bg:'#E3F2FD', color:'#1565C0', border:'#1565C0' },
-  { min:10, label:'En proceso',     bg:'#FFF3E0', color:'#E65100', border:'#E65100' },
-  { min: 0, label:'Por mejorar',    bg:'#FFEBEE', color:'#B71C1C', border:'#B71C1C' },
+  { min:41, label:'▲ Excelente',  bg:'#E8F5E9', color:'#1B5E20', border:'#1B5E20' },
+  { min:32, label:'● Bueno',      bg:'#E3F2FD', color:'#1565C0', border:'#1565C0' },
+  { min:23, label:'◆ Aceptable',  bg:'#FFF3E0', color:'#E65100', border:'#E65100' },
+  { min:14, label:'▶ Regular',    bg:'#FBE9E7', color:'#BF360C', border:'#BF360C' },
+  { min: 0, label:'▼ Deficiente', bg:'#FFEBEE', color:'#B71C1C', border:'#B71C1C' },
 ];
 function calcularPuntaje() {
   let total = 0, respondidos = 0;
-  for (let i = 1; i <= 6; i++) {
+  for (let i = 1; i <= 9; i++) {
     const sel = document.querySelector(`input[name="c${i}"]:checked`);
     if (sel) { total += PESOS[sel.className.replace('r-','')] || 0; respondidos++; }
   }
