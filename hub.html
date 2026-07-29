@@ -58,6 +58,7 @@
     padding: 0 16px;
     flex-shrink: 0;
     border-bottom: 3px solid var(--acento);
+    overflow-x: auto;
   }
   .tab-btn {
     display: flex;
@@ -221,6 +222,13 @@
         <span class="tab-code">FDE-077</span>
       </span>
     </button>
+    <button class="tab-btn" onclick="cambiarGuia(4)" id="tab4">
+      <span class="tab-num">5</span>
+      <span>
+        Plan de Prácticas
+        <span class="tab-code">FDE-290</span>
+      </span>
+    </button>
   </div>
 
   <!-- ── MAIN ───────────────────────────────────────────────────── -->
@@ -278,6 +286,14 @@ const GUIAS = [
     momento:  'Aplicar al finalizar la práctica profesional',
     objetivo: 'Formalizar el cierre de la práctica, evaluar las competencias finales del practicante, registrar apreciaciones de empresa y estudiante, y consignar las calificaciones finales.',
     secciones: ['Identificación','12 competencias (4 bloques)','Nota empresa','Apreciaciones y recomendaciones','Conclusiones Monitor','Perspectiva continuidad','Foto','Firmas (3)'],
+  },
+  {
+    archivo:  'FDE_290_Plan_de_Practicas.html',
+    titulo:   'Plan de Prácticas',
+    codigo:   'FDE-290',
+    momento:  'Elaborar y aprobar antes o al inicio de la práctica profesional',
+    objetivo: 'Definir los objetivos formativos, el sustento teórico y el cronograma de actividades que el practicante desarrollará en la empresa patrocinadora o escenario de prácticas, garantizando su pertinencia con el programa académico cursado.',
+    secciones: ['Identificación','Condiciones y modalidad','Sustento teórico','Objetivos','Cronograma de actividades','Firmas (3)'],
   },
 ];
 
