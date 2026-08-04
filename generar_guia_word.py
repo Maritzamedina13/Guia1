@@ -289,17 +289,25 @@ for opt in ['Facultad de Artes y Humanidades',
 
 # Opciones desplegables – Programa (agrupadas)
 programas = {
-    'Artes y Humanidades': ['Artes Visuales','Cine','Artes de la Grabación y Producción Musical',
-        'Tecnología en Informática Musical','Música','Licenciatura en Música'],
-    'Ciencias Económicas': ['Administración de Empresas','Contaduría Pública',
-        'Tecnología en Gestión de Empresas Turísticas','Negocios Internacionales','Mercadeo'],
-    'Ciencias Exactas': ['Biología','Matemáticas','Física','Tecnología en Higiene y Seguridad Industrial',
-        'Ingeniería Biomédica','Ingeniería Ambiental'],
-    'Ingenierías': ['Ingeniería de Sistemas','Ingeniería Electrónica','Ingeniería Eléctrica',
-        'Ingeniería Industrial','Ingeniería Mecatrónica','Ingeniería Mecánica',
-        'Ingeniería Financiera','Ingeniería de Producción',
-        'Tecnología en Electrónica','Tecnología en Sistemas Informáticos',
-        'Tecnología en Gestión Industrial']
+    'Artes y Humanidades': ['Tecnología en Diseño Industrial','Ingeniería en Diseño Industrial',
+        'Tecnología en Informática Musical','Artes Visuales','Cine',
+        'Artes de la Grabación y Producción Musical',
+        'Interpretación y Traducción Lengua de Señas Colombiana – español'],
+    'Ciencias Económicas': ['Tecnología en Sistemas de Producción','Tecnología en Gestión Comercial Virtual Dual',
+        'Tecnología en Gestión Administrativa - Presencial/Virtual','Tecnología en Control de la Calidad',
+        'Tecnología en Análisis de Costos y Presupuestos - Presencial/Virtual','Marketing',
+        'Ingeniería Financiera','Ingeniería de Producción','Ingeniería de la Calidad',
+        'Contaduría Pública','Administración Tecnológica','Administración del Deporte'],
+    'Ciencias Exactas': ['Tecnología en Mantenimiento de Equipo Biomédico',
+        'Tecnología en Construcción de Acabados Arquitectónicos','Química Industrial',
+        'Ingeniería Biomédica','Física','Ciencias Ambientales','Ciencia y Tecnología de los Alimentos'],
+    'Ingenierías': ['Tecnología en Sistemas Electromecánicos','Tecnología en Gestión de Redes de Telecomunicaciones',
+        'Tecnología en Diseño y Programación de Software como Servicio (SaaS)',
+        'Tecnología en Desarrollo de Software',
+        'Tecnología en Desarrollo de Aplicaciones para Dispositivos Móviles-Virtua',
+        'Tecnología en Automatización Electrónica','Ingeniería Mecatrónica','Ingeniería Electrónica',
+        'Ingeniería Electromecánica','Ingeniería de Telecomunicaciones','Ingeniería de Sistemas',
+        'Ingeniería de Ciencia de Datos']
 }
 p_prog = tbl2.rows[5].cells[1].paragraphs[0]
 p_prog.clear()
@@ -322,7 +330,7 @@ r2.font.size = Pt(8); r2.font.color.rgb = NEGRO; r2.font.name = 'Arial'
 
 # Opciones – Monitor
 monitores = ['Adriana Maria Zapata Cano','Alberto Alexander Fonnegra Montoya',
-    'Alicia Magnolia Vasquez Franco','Angie Paola Meneses Calderon',
+    'Angie Paola Meneses Calderon',
     'Carmen Elisa Escobar Agudelo','Carmen Liliana Barragan Guevara',
     'Claudia Ester Loaiza Alzate','Cristian David Bocanegra Villazon',
     'Erick Uribe Lopez','Estefanía Hidalgo Vásquez','Gladys Cristina Perez Rojas',
@@ -332,7 +340,7 @@ monitores = ['Adriana Maria Zapata Cano','Alberto Alexander Fonnegra Montoya',
     'Luis Santiago Ramirez Alvarez','Maria Isabel Vicente Jimenez',
     'Maritza Medina Giraldo','Monica Maria Meneses Martinez',
     'Natalia Eugenia Fonnegra Gomez','Norida Astrid Valencia Bustamante',
-    'Robert NG Henao','Yanneth Del Socorro Lopez']
+    'Robert NG Henao']
 p_mon = tbl2.rows[7].cells[1].paragraphs[0]
 p_mon.clear()
 r = p_mon.add_run('[Lista desplegable – Monitores asignados ITM]\n')
